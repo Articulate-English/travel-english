@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel English - Cultural Sites</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+:root{--bg:#03030a;--bg-deep:#0a0a15;--accent:#22d3ee;--accent-rgb:34,211,238;--text:#e2e8f0;--vocab-b1:#81d4fa;--vocab-b2:#a3e635;--vocab-b2p:#ff7ac6;--cyan:#22d3ee;--green:#34d399}
+[data-theme="midnight"]{--bg:#02010a;--accent:#6366f1;--accent-rgb:99,102,241}
+[data-theme="forest"]{--bg:#0c1a1a;--accent:#34d399;--accent-rgb:52,211,153}
+[data-theme="rose"]{--bg:#1a0a0f;--accent:#fb7185;--accent-rgb:251,113,133}
+[data-theme="lavender"]{--bg:#140a1a;--accent:#c4b5fd;--accent-rgb:196,181,253}
+[data-theme="sunset"]{--bg:#1a1400;--accent:#fbbf24;--accent-rgb:251,191,36}
+[data-theme="cosmos"]{--bg:#0b0518;--accent:#a78bfa;--accent-rgb:167,139,250}
+[data-theme="ice"]{--bg:#060e1a;--accent:#67e8f9;--accent-rgb:103,232,249}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+.slide{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;opacity:0;pointer-events:none;padding:5vh 4vw;gap:12px}
+.slide.active{opacity:1;pointer-events:auto}
+.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,10,20,.78) 0%,rgba(6,10,20,.45) 45%,rgba(6,10,20,.18) 100%);z-index:0}
+.content{position:relative;z-index:1;max-width:80vw;width:100%;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.45);border-left:3px solid var(--accent);border-radius:18px;padding:1.4em 1.8em;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.3);margin:auto 0}
+.label{color:#94a3b8;font-size:.85rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4em}
+.vocab-word{position:relative;cursor:pointer;font-weight:600;border-bottom:1.5px dotted var(--accent);background:transparent;color:var(--accent);padding:0 2px;transition:background .2s}
+.vocab-word:hover{background:rgba(255,255,255,.05)}
+.vocab-word.level-b1{border-bottom-color:var(--vocab-b1);color:var(--vocab-b1)}
+.vocab-word.level-b2{border-bottom-color:var(--vocab-b2);color:var(--vocab-b2)}
+.vocab-word.level-b2p{border-bottom-color:var(--vocab-b2p);color:var(--vocab-b2p)}
+#vocabTooltip{position:fixed;background:rgba(10,16,32,.95);border:1px solid var(--accent);border-radius:12px;padding:1em;max-width:280px;z-index:100;display:none;backdrop-filter:blur(10px)}
+#vocabTooltip.show{display:block}
+.ex-btn{background:rgba(var(--accent-rgb),.2);border:2px solid rgba(var(--accent-rgb),.6);color:#fff;padding:.6em 1.2em;border-radius:12px;cursor:pointer;font-size:.95rem;font-weight:600;transition:all .2s;min-height:44px;min-width:44px}
+.ex-btn:hover{background:rgba(var(--accent-rgb),.35);transform:scale(1.05)}
+.ex-btn.revealed{background:rgba(52,211,153,.25);border-color:rgba(52,211,153,.7)}
+.answer-reveal{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:12px;padding:.8em 1.2em;margin:.6em 0;color:#34d399;font-size:.95rem;display:none}
+.answer-reveal.show{display:block}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:10px;background:rgba(10,16,32,.9);padding:10px 20px;border-radius:30px;border:1px solid rgba(var(--accent-rgb),.3);backdrop-filter:blur(12px)}
+.nav button{background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent);padding:8px 18px;border-radius:20px;cursor:pointer;font-size:.9rem;min-height:44px}
+.theme-cycle-btn{position:fixed;top:1em;right:1em;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.theme-cycle-btn:hover{background:rgba(255,255,255,.08);transform:scale(1.08)}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--cyan),var(--green));width:0%;transition:width .3s;z-index:100}
+.counter{font-size:.85rem;color:#64748b;min-width:50px;text-align:center;font-family:'JetBrains Mono',monospace}
+@media(max-width:768px){.content{max-width:92vw;padding:1em 1.2em}.ex-btn{width:100%}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div id="vocabTooltip"><div class="word" style="font-weight:700;color:var(--accent);margin-bottom:.3em"></div><div class="pos" style="font-size:.8rem;color:var(--cyan);margin-bottom:.5em"></div><div class="def" style="font-size:.9rem;color:#e2e8f0"></div><div class="it" style="font-size:.85rem;color:#fbbf24;margin-top:.5em;font-style:italic"></div></div>
+
+<section class="slide active" data-slide="0" style="background-image:url('https://images.unsplash.com/photo-1520250497591-152694812857?w=1600&q=80');background-size:cover;background-position:center">
+  <div class="content"><h1 style="font-size:clamp(2rem,4vw,3rem);background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3em;text-align:center">Cultural Sites</h1>
+  <p style="font-size:1rem;color:#e2e8f0;text-align:center;margin-bottom:.5em">Travel vocabulary for Italian speakers · B1 + B2 level</p>
+  <p class="label">Key vocabulary (click for Italian definition):</p>
+  <p style="line-height:1.8;font-size:1rem;margin-top:.8em"><span class="vocab-word level-b1" data-word="ticket-booth">ticket booth</span> · <span class="vocab-word level-b2" data-word="guided-tour">guided tour</span> · <span class="vocab-word level-b1" data-word="audio-guide">audio guide</span> · <span class="vocab-word level-b2" data-word="artefact-view">artefact view</span></p>
+  </div>
+</section>
+
+<section class="slide" data-slide="1">
+  <div class="content"><p class="label">Questions · Answer in full sentences:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">What should travelers know about cultural sites?</p>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a1').classList.toggle('show')">Reveal</button>
+  <div class="answer-reveal" id="a1">Learn key terms beforehand and ask locals respectfully for help when needed. Preparation prevents common misunderstandings.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="2">
+  <div class="content"><p class="label">Rearrange the words:</p>
+  <p style="font-size:1.1rem;color:var(--accent);text-align:center;margin:.8em 0">[Please / can / I / get / assistance / with / this?]</p>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('o1').classList.toggle('show')">Check</button>
+  <div class="answer-reveal" id="o1">Please can I get assistance with this?</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="3">
+  <div class="content"><p class="label">Describe the picture:</p>
+  <img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/train-station-1283703_1280.jpg" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin:.6em 0" onerror="this.style.display='none'">
+  <textarea placeholder="Describe what you see..." style="width:100%;min-height:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#e2e8f0;padding:10px;font-size:.95rem"></textarea>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('d1').classList.toggle('show')">Model</button>
+  <div class="answer-reveal" id="d1">People navigate the transport hub efficiently. Digital displays guide passengers. Modern architecture combines functionality with design.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="4">
+  <div class="content"><p class="label">Questions · Your experience:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Any challenges travelers might face?</p>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a2').classList.toggle('show')">Reveal</button>
+  <div class="answer-reveal" id="a2">Language barriers, unfamiliar procedures, and local customs differ. Research and basic phrases help overcome these obstacles.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="5">
+  <div class="content"><p class="label">Compare the pictures:</p>
+  <div style="display:flex;gap:10px;margin:.6em 0;flex-wrap:wrap">
+    <img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/bus-1283702_1280.jpg" style="flex:1;min-width:100px;height:140px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'">
+    <img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/train-1283704_1280.jpg" style="flex:1;min-width:100px;height:140px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'">
+  </div>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('c1').classList.toggle('show')">Model</button>
+  <div class="answer-reveal" id="c1">Both serve public transport. Each method suits different distances and passenger volumes. Infrastructure quality varies by location.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="6">
+  <div class="content"><p class="label">Deeper questions:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">How does this differ in Italy?</p>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a3').classList.toggle('show')">Reveal</button>
+  <div class="answer-reveal" id="a3">Local customs, operating hours, and service style differ. Italians value personal interaction over automation when possible.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="7">
+  <div class="content"><p class="label">Speaking · 2 minutes:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Describe a related travel experience.</p>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('s1').classList.toggle('show')">Model</button>
+  <div class="answer-reveal" id="s1">I once needed help and a local explained patiently. Good communication bridges cultural differences. Politeness opens doors anywhere.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="8">
+  <div class="content"><p class="label">Vocabulary review - B2+ words:</p>
+  <p style="line-height:1.8;font-size:1rem"><span class="vocab-word level-b1" data-word="museum-shop">museum shop</span> · <span class="vocab-word level-b2" data-word="exhibit-hall">exhibit hall</span> · <span class="vocab-word level-b2p" data-word="heritage-listed">heritage listed</span> · <span class="vocab-word level-b1" data-word="tourist-information">tourist information</span></p>
+  </div>
+</section>
+
+<section class="slide" data-slide="9">
+  <div class="content"><p class="label">Grammar · Passive voice:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Service <strong>is provided</strong>. Requests <strong>are handled</strong>. Help <strong>is available</strong>.</p>
+  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('g1').classList.toggle('show')">More</button>
+  <div class="answer-reveal" id="g1">Information <strong>has been updated</strong>. Procedures <strong>have changed</strong>. Guidelines <strong>are posted</strong> clearly.</div>
+  </div>
+</section>
+
+<section class="slide" data-slide="10">
+  <div class="content"><p class="label">Useful expressions:</p>
+  <p style="font-size:1rem;line-height:1.8;margin:.8em 0">Excuse me · Please · Thank you · Sorry</p>
+  </div>
+</section>
+
+<section class="slide" data-slide="11">
+  <div class="content"><p class="label">Cultural tip:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">In Italy, greetings matter. Start with 'Buongiorno'. Hand gestures express meaning. Patience and respect go further than frustration.</p>
+  </div>
+</section>
+
+<section class="slide" data-slide="12">
+  <div class="content"><p class="label">Summary:</p>
+  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Learned vocabulary and phrases. Practice describing experiences.</p>
+  </div>
+</section>
+
+<div class="nav"><button id="prev">Prev</button><span id="navCounter" class="counter">1 / 13</span><button id="next">Next</button></div>
+<button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme"></button>
+
+<script>
+(function(){var t=localStorage.getItem('travel-theme');if(t&&t!=='1'){var themes=['','midnight','forest','rose','lavender','sunset','cosmos','ice'];document.body.setAttribute('data-theme',themes[parseInt(t)]||'');}})();
+var slides=document.querySelectorAll('.slide');var vocab={'ticket-booth':{'pos':'noun','def':'place to buy tickets','it':'biglietteria'},'guided-tour':{'pos':'noun','def':'tour with a guide','it':'visita guidata'},'audio-guide':{'pos':'noun','def':'recorded commentary device','it':'audioguida'},'artefact-view':{'pos':'noun','def':'display of historical objects','it':'arte esposta'},'museum-shop':{'pos':'noun','def':'souvenir store in museum','it':'negozio del museo'},'exhibit-hall':{'pos':'noun','def':'gallery room','it':'sala mostre'},'heritage-listed':{'pos':'adjective','def':'officially protected heritage','it':'patrimonio'},'tourist-information':{'pos':'noun','def':'visitor help center','it':'informazioni turismo'}};
+var current=0;
+function update(){slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%';document.getElementById('navCounter').textContent=(current+1)+' / '+slides.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1}
+function next(){if(current<slides.length-1)current++;update()}
+function prev(){if(current>0)current--;update()}
+document.getElementById('next').addEventListener('click',next);document.getElementById('prev').addEventListener('click',prev);document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev()});update();
+document.querySelectorAll('.vocab-word').forEach(el=>el.addEventListener('click',e=>{var v=vocab[e.target.dataset.word];if(v){var t=document.getElementById('vocabTooltip');t.querySelector('.word').textContent=e.target.textContent;t.querySelector('.pos').textContent=v.pos;t.querySelector('.def').textContent=v.def;t.querySelector('.it').textContent='Italian: '+v.it;t.classList.add('show');var r=e.target.getBoundingClientRect();t.style.left=r.left+r.width/2+'px';t.style.top=r.bottom+10+'px'}}));document.addEventListener('click',e=>{if(!e.target.closest('.vocab-word'))document.getElementById('vocabTooltip').classList.remove('show')});
+</script>
+<p style="text-align:center;font-size:.7rem;color:#6b7280;padding:12px 24px;border-top:1px solid rgba(255,255,255,.08);margin-top:20px;">Disclaimer: This is an independent practice resource for IELTS-style exam preparation. It is not affiliated with, endorsed by, or connected to IELTS, IDP Education, British Council, or Cambridge Assessment English. IELTS is a registered trademark of its respective owners.</p>
+</body>
+</html>

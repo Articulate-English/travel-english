@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Travel English - Transportation</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:;">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700}&display=swap');
+:root{--bg:#03030a;--accent:#22d3ee;--accent-rgb:34,211,238;--text:#e2e8f0;--vocab-b1:#81d4fa;--vocab-b2:#a3e635;--vocab-b2p:#ff7ac6}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+.slide{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;opacity:0;pointer-events:none;padding:5vh 4vw;gap:12px}
+.slide.active{opacity:1;pointer-events:auto}
+.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,10,20,.78) 0%,rgba(6,10,20,.45) 45%,rgba(6,10,20,.18) 100%);z-index:0}
+.content{position:relative;z-index:1;max-width:80vw;width:100%;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.45);border-left:3px solid var(--accent);border-radius:18px;padding:1.4em 1.8em;backdrop-filter:blur(12px);margin:auto 0}
+.label{color:#94a3b8;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4em}
+.vocab-word{cursor:pointer;font-weight:600;border-bottom:1.5px dotted var(--accent);color:var(--accent);padding:0 2px}
+.vocab-word.level-b2p{border-bottom-color:var(--vocab-b2p);color:var(--vocab-b2p)}
+#vocabTooltip{position:fixed;background:rgba(10,16,32,.95);border:1px solid var(--accent);border-radius:12px;padding:1em;max-width:280px;z-index:100;display:none}
+#vocabTooltip.show{display:block}
+.ex-btn{background:rgba(var(--accent-rgb),.2);border:2px solid rgba(var(--accent-rgb),.6);color:#fff;padding:.6em 1.2em;border-radius:12px;cursor:pointer;font-size:.95rem;min-height:44px}
+.ex-btn.revealed{background:rgba(52,211,153,.25)}
+.answer-reveal{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:12px;padding:.8em 1.2em;margin:.6em 0;color:#34d399;display:none}
+.answer-reveal.show{display:block}
+.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:10px;background:rgba(10,16,32,.9);padding:10px 20px;border-radius:30px;border:1px solid rgba(var(--accent-rgb),.3)}
+.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--cyan),var(--green));width:0%;z-index:100}
+.counter{font-size:.85rem;color:#64748b;min-width:50px;text-align:center;font-family:'JetBrains Mono',monospace}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div id="vocabTooltip"><div class="word" style="font-weight:700;color:var(--accent)"></div><div class="pos" style="font-size:.8rem;color:var(--cyan)"></div><div class="def" style="font-size:.9rem;color:#e2e8f0"></div><div class="it" style="font-size:.85rem;color:#fbbf24;font-style:italic"></div></div>
+
+<section class="slide active" data-slide="0" style="background-image:url('https://images.unsplash.com/photo-1520250497591-152694812857?w=1600&q=80')">
+  <div class="content"><h1 style="font-size:2rem;background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center;margin-bottom:.5em">Transportation</h1>
+  <p style="font-size:.9rem;color:#e2e8f0;text-align:center">Travel vocabulary for Italian speakers</p>
+  <p class="label" style="margin-top:.8em">Key vocabulary:</p>
+  <p style="line-height:1.8;font-size:.95rem;margin-top:.5em"><span class="vocab-word level-b2" data-word="commuter-train">commuter train</span> · <span class="vocab-word level-b1" data-word="subway-map">subway map</span> · <span class="vocab-word level-b2" data-word="ticket-validation">ticket validation</span> · <span class="vocab-word level-b2p" data-word="fare-dodger">fare dodger</span> · <span class="vocab-word level-b1" data-word="express-bus">express bus</span></p>
+  </div>
+</section>
+
+<section class="slide" data-slide="1"><div class="content"><p class="label">Question:</p><p style="font-size:.95rem;line-height:1.6;margin:.8em 0">What public transport options exist in your city?</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a1').classList.toggle('show')">Reveal</button><div class="answer-reveal" id="a1">We have buses, trams, metro, and regional trains. Tickets can be bought at newsstands or via mobile apps. Monthly passes offer savings for regular commuters.</div></div></section>
+
+<section class="slide" data-slide="2"><div class="content"><p class="label">Order the words:</p><p style="font-size:1rem;color:var(--accent);text-align:center;margin:.8em 0">[Where / is / the / subway / map / for / downtown?]</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('o1').classList.toggle('show')">Check</button><div class="answer-reveal" id="o1">Where is the subway map for downtown?</div></div></section>
+
+<section class="slide" data-slide="3"><div class="content"><p class="label">Describe picture:</p><img src="https://cdn.pixabay.com/photo/2017/06/10/07/18/train-2391788_1280.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:8px;margin:.5em 0"><textarea placeholder="Describe..." style="width:100%;min-height:90px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:#e2e8f0;padding:8px;font-size:.9rem"></textarea><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('d1').classList.toggle('show')">Model</button><div class="answer-reveal" id="d1">Passengers wait on the platform. Digital boards show arrival times. The train is modern with comfortable seating and space for luggage.</div></div></section>
+
+<section class="slide" data-slide="4"><div class="content"><p class="label">Question:</p><p style="font-size:.95rem;line-height:1.6;margin:.8em 0">Have you ever had transport problems while traveling?</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a2').classList.toggle('show')">Reveal</button><div class="answer-reveal" id="a2">My bus broke down in rural France. I waited two hours for replacement service. The driver apologized and provided water. Locals offered helpful directions.</div></div></section>
+
+<section class="slide" data-slide="5"><div class="content"><p class="label">Compare:</p><div style="display:flex;gap:8px;margin:.5em 0"><img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/bus-1283702_1280.jpg" style="flex:1;height:120px;object-fit:cover;border-radius:8px"><img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/train-station-1283703_1280.jpg" style="flex:1;height:120px;object-fit:cover;border-radius:8px"></div><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('c1').classList.toggle('show')">Model</button><div class="answer-reveal" id="c1">Left shows bus with single door. Right shows train with multiple cars. Both connect people but serve different distances and capacities.</div></div></section>
+
+<section class="slide" data-slide="6"><div class="content"><p class="label">Discussion:</p><p style="font-size:.95rem;line-height:1.6;margin:.8em 0">Is public transport better than private cars?</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a3').classList.toggle('show')">Reveal</button><div class="answer-reveal" id="a3">Public transport reduces pollution and traffic. It is cheaper for daily commutes. However, cars offer flexibility and privacy for families and luggage.</div></div></section>
+
+<section class="slide" data-slide="7"><div class="content"><p class="label">Speaking:</p><p style="font-size:.95rem;line-height:1.6;margin:.8em 0">Describe your favorite journey by public transport.</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('s1').classList.toggle('show')">Model</button><div class="answer-reveal" id="s1">The ferry from Naples to Capri was spectacular. Blue water, island views, and sea breeze. The 45-minute ride was relaxing compared to crowded buses.</div></div></section>
+
+<section class="slide" data-slide="8"><div class="content"><p class="label">Vocabulary:</p><p style="line-height:1.8;font-size:.95rem"><span class="vocab-word level-b2p" data-word="taxi-stand">taxi stand</span> · <span class="vocab-word level-b2" data-word="ride-sharing">ride-sharing</span> · <span class="vocab-word level-b1" data-word="tram-stop">tram stop</span></p></div></section>
+
+<section class="slide" data-slide="9"><div class="content"><p class="label">Grammar:</p><p style="font-size:.95rem;line-height:1.6;margin:.8em 0">Tickets <strong>are validated</strong> before boarding.<br>The train <strong>is arriving</strong> at platform 3.<br>Service <strong>was delayed</strong> due to strike.</p><button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('g1').classList.toggle('show')">More</button><div class="answer-reveal" id="g1">My ticket <strong>has been stamped</strong>. Delays <strong>affect many passengers</strong>. Transport helps <strong>reduce carbon emissions</strong>.</div></div></section>
+
+<section class="slide" data-slide="10"><div class="content"><p class="label">Expressions:</p><p style="font-size:.95rem">next stop / excuse me / is this seat free? / ticket inspector / delay due to traffic</p></div></section>
+
+<section class="slide" data-slide="11"><div class="content"><p class="label">Cultural tip:</p><p style="font-size:.95rem;line-height:1.6">In Italy, validate tickets before boarding buses or trains. Fare inspectors check and fine passengers without validation. Regional trains are slower but scenic.</p></div></section>
+
+<section class="slide" data-slide="12"><div class="content"><p class="label">Summary:</p><p style="font-size:.95rem">Learned transportation vocabulary. Practice describing journeys and handling problems. Continue to Restaurants.</p></div></section>
+
+<div class="nav"><button id="prev">Prev</button><span id="navCounter" class="counter">1 / 12</span><button id="next">Next</button></div>
+<script>
+(function(){var t=localStorage.getItem('travel-theme');if(t&&t!=='1')document.body.setAttribute('data-theme',['','midnight','forest'][parseInt(t)]||'');})();
+var slides=document.querySelectorAll('.slide'),vocab={'commuter-train':{'pos':'noun','def':'regional train','it':'treno regionale'},'subway-map':{'pos':'noun','def':'metro map','it':'metro'},'ticket-validation':{'pos':'noun','def':'ticket check','it':'convalida biglietto'},'fare-dodger':{'pos':'noun','def':'ticket evader','it':'evasore'},'express-bus':{'pos':'noun','def':'fast bus','it':'bus express'},'taxi-stand':{'pos':'noun','def':'taxi rank','it':'posto taxi'},'ride-sharing':{'pos':'noun','def':'shared ride','it':'condivisione viaggio'},'tram-stop':{'pos':'noun','def':'tram station','it':'fermata tram'}},current=0;
+function update(){slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%';document.getElementById('navCounter').textContent=(current+1)+' / '+slides.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1}
+document.getElementById('next').addEventListener('click',()=>{if(current<slides.length-1)current++;update()});document.getElementById('prev').addEventListener('click',()=>{if(current>0)current--;update()});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev()});update();
+document.querySelectorAll('.vocab-word').forEach(el=>el.addEventListener('click',e=>{var v=vocab[e.target.dataset.word];if(v){var t=document.getElementById('vocabTooltip');t.querySelector('.word').textContent=e.target.textContent;t.querySelector('.def').textContent=v.def;t.querySelector('.it').textContent='Italian: '+v.it;t.classList.add('show')}}));
+document.addEventListener('click',e=>{if(!e.target.closest('.vocab-word'))document.getElementById('vocabTooltip').classList.remove('show')});
+</script>
+<p style="text-align:center;font-size:.7rem;color:#6b7280;padding:12px 24px;border-top:1px solid rgba(255,255,255,.08);margin-top:20px;">Disclaimer: This is an independent practice resource for IELTS-style exam preparation. It is not affiliated with, endorsed by, or connected to IELTS, IDP Education, British Council, or Cambridge Assessment English. IELTS is a registered trademark of its respective owners.</p>
+</body>
+</html>
