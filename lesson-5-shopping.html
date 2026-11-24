@@ -3,168 +3,676 @@
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Travel English - Shopping & Money</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="description" content="Travel English lesson: Shopping & Money — travel vocabulary, speaking practice and grammar for Italian speakers at B1-B2 level.">
+<title>Travel English · Shopping & Money</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
-:root{--bg:#03030a;--bg-deep:#0a0a15;--accent:#22d3ee;--accent-rgb:34,211,238;--text:#e2e8f0;--vocab-b1:#81d4fa;--vocab-b2:#a3e635;--vocab-b2p:#ff7ac6}
-[data-theme="midnight"]{--bg:#02010a;--accent:#6366f1;--accent-rgb:99,102,241}
-[data-theme="forest"]{--bg:#0c1a1a;--accent:#34d399;--accent-rgb:52,211,153}
-[data-theme="rose"]{--bg:#1a0a0f;--accent:#fb7185;--accent-rgb:251,113,133}
-[data-theme="lavender"]{--bg:#140a1a;--accent:#c4b5fd;--accent-rgb:196,181,253}
-[data-theme="sunset"]{--bg:#1a1400;--accent:#fbbf24;--accent-rgb:251,191,36}
-[data-theme="cosmos"]{--bg:#0b0518;--accent:#a78bfa;--accent-rgb:167,139,250}
-[data-theme="ice"]{--bg:#060e1a;--accent:#67e8f9;--accent-rgb:103,232,249}
+/* ============ TOKENS ============ */
+:root{
+  --bg:#04070f; --bg-deep:#070d1a;
+  --accent:#22d3ee; --accent-rgb:34,211,238;
+  --accent-2:#818cf8; --accent-2-rgb:129,140,248;
+  --text:#e6edf7; --text-dim:#93a1b8;
+  --surface:rgba(12,19,34,.74); --surface-strong:rgba(7,11,21,.92); --surface-soft:rgba(255,255,255,.05);
+  --border:rgba(148,197,255,.16); --border-strong:rgba(34,211,238,.45);
+  --overlay-1:rgba(3,6,14,.86); --overlay-2:rgba(3,6,14,.58); --overlay-3:rgba(3,6,14,.28);
+  --glow:rgba(34,211,238,.34);
+  --pos-noun:#7dd3fc; --pos-verb:#a3e635; --pos-adj:#f9a8d4;
+  --pos-adv:#fbbf24; --pos-phrase:#c4b5fd; --pos-idiom:#fb7185; --pos-other:#93a1b8;
+  --good:#34d399; --good-rgb:52,211,153;
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --radius:20px;
+  --nav-h:64px;
+}
+body[data-theme="midnight"]{--bg:#05050f;--bg-deep:#0a0a1c;--accent:#818cf8;--accent-rgb:129,140,248;--accent-2:#c084fc;--accent-2-rgb:192,132,252;--surface:rgba(16,16,34,.76);--surface-strong:rgba(9,9,22,.94);--border:rgba(163,150,255,.18);--border-strong:rgba(129,140,248,.5);--overlay-1:rgba(4,4,14,.88);--overlay-2:rgba(4,4,14,.6);--overlay-3:rgba(4,4,14,.3);--glow:rgba(129,140,248,.34)}
+body[data-theme="forest"]{--bg:#04120d;--bg-deep:#071b13;--accent:#34d399;--accent-rgb:52,211,153;--accent-2:#a3e635;--accent-2-rgb:163,230,53;--surface:rgba(10,26,20,.76);--surface-strong:rgba(5,17,12,.94);--border:rgba(110,220,170,.16);--border-strong:rgba(52,211,153,.5);--overlay-1:rgba(3,12,8,.88);--overlay-2:rgba(3,12,8,.6);--overlay-3:rgba(3,12,8,.3);--glow:rgba(52,211,153,.32)}
+body[data-theme="rose"]{--bg:#150609;--bg-deep:#1f0a10;--accent:#fb7185;--accent-rgb:251,113,133;--accent-2:#f472b6;--accent-2-rgb:244,114,182;--surface:rgba(32,12,18,.76);--surface-strong:rgba(21,7,11,.94);--border:rgba(255,150,170,.16);--border-strong:rgba(251,113,133,.5);--overlay-1:rgba(18,4,7,.88);--overlay-2:rgba(18,4,7,.6);--overlay-3:rgba(18,4,7,.3);--glow:rgba(251,113,133,.32)}
+body[data-theme="lavender"]{--bg:#0d0716;--bg-deep:#150c22;--accent:#c4b5fd;--accent-rgb:196,181,253;--accent-2:#f0abfc;--accent-2-rgb:240,171,252;--surface:rgba(24,14,38,.76);--surface-strong:rgba(15,8,25,.94);--border:rgba(205,180,255,.18);--border-strong:rgba(196,181,253,.5);--overlay-1:rgba(11,5,19,.88);--overlay-2:rgba(11,5,19,.6);--overlay-3:rgba(11,5,19,.3);--glow:rgba(196,181,253,.3)}
+body[data-theme="sunset"]{--bg:#140d03;--bg-deep:#1d1405;--accent:#fbbf24;--accent-rgb:251,191,36;--accent-2:#fb7185;--accent-2-rgb:251,113,133;--surface:rgba(32,22,7,.76);--surface-strong:rgba(22,15,4,.94);--border:rgba(255,205,110,.16);--border-strong:rgba(251,191,36,.5);--overlay-1:rgba(18,12,2,.88);--overlay-2:rgba(18,12,2,.6);--overlay-3:rgba(18,12,2,.3);--glow:rgba(251,191,36,.3)}
+body[data-theme="cosmos"]{--bg:#08041a;--bg-deep:#0e0826;--accent:#a78bfa;--accent-rgb:167,139,250;--accent-2:#22d3ee;--accent-2-rgb:34,211,238;--surface:rgba(18,10,38,.76);--surface-strong:rgba(11,6,25,.94);--border:rgba(180,150,255,.18);--border-strong:rgba(167,139,250,.5);--overlay-1:rgba(7,3,18,.88);--overlay-2:rgba(7,3,18,.6);--overlay-3:rgba(7,3,18,.3);--glow:rgba(167,139,250,.32)}
+body[data-theme="ice"]{--bg:#030d17;--bg-deep:#061525;--accent:#67e8f9;--accent-rgb:103,232,249;--accent-2:#38bdf8;--accent-2-rgb:56,189,248;--surface:rgba(9,22,36,.76);--surface-strong:rgba(4,14,24,.94);--border:rgba(140,225,255,.16);--border-strong:rgba(103,232,249,.5);--overlay-1:rgba(2,10,18,.88);--overlay-2:rgba(2,10,18,.6);--overlay-3:rgba(2,10,18,.3);--glow:rgba(103,232,249,.3)}
+
+/* ============ BASE ============ */
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif}
-.slide{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;opacity:0;pointer-events:none;padding:5vh 4vw;gap:12px}
-.slide.active{opacity:1;pointer-events:auto}
-.slide::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,10,20,.78) 0%,rgba(6,10,20,.45) 45%,rgba(6,10,20,.18) 100%);z-index:0}
-.content{position:relative;z-index:1;max-width:80vw;width:100%;background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.45);border-left:3px solid var(--accent);border-radius:18px;padding:1.4em 1.8em;backdrop-filter:blur(12px);box-shadow:0 8px 32px rgba(0,0,0,.3);margin:auto 0}
-.label{color:#94a3b8;font-size:.85rem;font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4em}
-.vocab-word{position:relative;cursor:pointer;font-weight:600;border-bottom:1.5px dotted var(--accent);background:transparent;color:var(--accent);padding:0 2px;transition:background .2s}
-.vocab-word:hover{background:rgba(255,255,255,.05)}
-.vocab-word.level-b1{border-bottom-color:var(--vocab-b1);color:var(--vocab-b1)}
-.vocab-word.level-b2{border-bottom-color:var(--vocab-b2);color:var(--vocab-b2)}
-.vocab-word.level-b2p{border-bottom-color:var(--vocab-b2p);color:var(--vocab-b2p)}
-#vocabTooltip{position:fixed;background:rgba(10,16,32,.95);border:1px solid var(--accent);border-radius:12px;padding:1em;max-width:280px;z-index:100;display:none;backdrop-filter:blur(10px)}
-#vocabTooltip.show{display:block}
-.ex-btn{background:rgba(var(--accent-rgb),.2);border:2px solid rgba(var(--accent-rgb),.6);color:#fff;padding:.6em 1.2em;border-radius:12px;cursor:pointer;font-size:.95rem;font-weight:600;transition:all .2s;min-height:44px;min-width:44px}
-.ex-btn:hover{background:rgba(var(--accent-rgb),.35);transform:scale(1.05)}
-.ex-btn.revealed{background:rgba(52,211,153,.25);border-color:rgba(52,211,153,.7)}
-.answer-reveal{background:rgba(52,211,153,.1);border:1px solid rgba(52,211,153,.3);border-radius:12px;padding:.8em 1.2em;margin:.6em 0;color:#34d399;font-size:.95rem;display:none}
-.answer-reveal.show{display:block}
-.nav{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:100;display:flex;gap:10px;background:rgba(10,16,32,.9);padding:10px 20px;border-radius:30px;border:1px solid rgba(var(--accent-rgb),.3);backdrop-filter:blur(12px)}
-.nav button{background:rgba(var(--accent-rgb),.12);border:1px solid rgba(var(--accent-rgb),.4);color:var(--accent);padding:8px 18px;border-radius:20px;cursor:pointer;font-size:.9rem;min-height:44px}
-.theme-cycle-btn{position:fixed;top:1em;right:1em;z-index:100;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.12);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.theme-cycle-btn:hover{background:rgba(255,255,255,.08);transform:scale(1.08)}
-.progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--cyan),var(--green));width:0%;transition:width .3s;z-index:100}
-.counter{font-size:.85rem;color:#64748b;min-width:50px;text-align:center;font-family:'JetBrains Mono',monospace}
-@media(max-width:768px){.content{max-width:92vw;padding:1em 1.2em}.ex-btn{width:100%}}
+html,body{height:100%;overflow:hidden}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:var(--font-body); font-size:17px; line-height:1.65;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  transition:background-color .4s ease,color .4s ease;
+}
+img{max-width:100%;display:block}
+button{font-family:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+
+/* ambient mesh + grain */
+.mesh{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.mesh i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.5;mix-blend-mode:screen;animation:drift 26s ease-in-out infinite alternate}
+.mesh i:nth-child(1){width:52vw;height:52vw;left:-14vw;top:-18vw;background:radial-gradient(circle at 40% 40%,rgba(var(--accent-rgb),.5),transparent 65%)}
+.mesh i:nth-child(2){width:44vw;height:44vw;right:-12vw;bottom:-16vw;background:radial-gradient(circle at 60% 60%,rgba(var(--accent-2-rgb),.42),transparent 65%);animation-duration:32s;animation-delay:-8s}
+.mesh i:nth-child(3){width:30vw;height:30vw;left:38vw;top:44vh;background:radial-gradient(circle at 50% 50%,rgba(var(--accent-rgb),.24),transparent 68%);animation-duration:38s;animation-delay:-16s}
+@keyframes drift{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(4vw,-3vh,0) scale(1.12)}}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ============ SLIDES ============ */
+.slide{
+  position:fixed; inset:0; z-index:2;
+  display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+  padding:clamp(14px,3vh,34px) clamp(16px,4vw,48px) calc(var(--nav-h) + 34px);
+  overflow-y:auto; overflow-x:hidden;
+  opacity:0; visibility:hidden;
+  transition:opacity .45s ease,visibility 0s linear .45s;
+  scrollbar-width:thin; scrollbar-color:var(--border-strong) transparent;
+}
+.slide.active{opacity:1;visibility:visible;transition:opacity .45s ease,visibility 0s}
+.bg-layer{position:absolute;inset:0;z-index:-1;overflow:hidden;background:linear-gradient(160deg,var(--bg-deep),var(--bg))}
+.bg-layer img{width:100%;height:100%;object-fit:cover;filter:brightness(.42) saturate(1.15) contrast(1.06);transform:scale(1.05)}
+.slide.active .bg-layer img{animation:kenburns 22s ease-in-out infinite alternate}
+@keyframes kenburns{from{transform:scale(1.05) translate3d(0,0,0)}to{transform:scale(1.14) translate3d(-1.5%,-1.5%,0)}}
+.slide::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:linear-gradient(100deg,var(--overlay-1) 0%,var(--overlay-2) 46%,var(--overlay-3) 100%)}
+.slide::after{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(120% 80% at 50% 0%,transparent 40%,var(--overlay-2) 100%)}
+
+.content{
+  position:relative; z-index:1; width:100%; max-width:min(880px,94vw);
+  margin:auto 0;
+  background:var(--surface); border:1px solid var(--border);
+  border-left:3px solid var(--accent);
+  border-radius:var(--radius); padding:clamp(1.2rem,2.4vw,2rem) clamp(1.1rem,2.6vw,2.2rem);
+  backdrop-filter:blur(16px) saturate(1.3); -webkit-backdrop-filter:blur(16px) saturate(1.3);
+  box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.02) inset,0 0 44px -18px var(--glow);
+}
+.slide.active .content{animation:rise .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px) scale(.985)}to{opacity:1;transform:none}}
+
+/* ============ TYPE ============ */
+.kicker{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:.9em}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.12;letter-spacing:-.02em}
+.title{font-size:clamp(2.1rem,6vw,3.9rem);text-align:center;margin-bottom:.35em;
+  background:linear-gradient(120deg,var(--accent) 10%,var(--accent-2) 90%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.subtitle{text-align:center;color:var(--text-dim);font-size:clamp(.98rem,1.6vw,1.12rem);max-width:46ch;margin:0 auto}
+.label{font-family:var(--font-mono);font-size:.74rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:1em;display:flex;align-items:center;gap:.7em}
+.label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border-strong),transparent)}
+.q{font-size:clamp(1.15rem,2.2vw,1.45rem);font-weight:600;line-height:1.5;margin:.7em 0 .9em;color:var(--text)}
+.body-copy{font-size:clamp(1rem,1.5vw,1.1rem);line-height:1.75;color:var(--text)}
+.muted{color:var(--text-dim)}
+.center{text-align:center}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-top:1.6rem}
+.chip{font-family:var(--font-mono);font-size:.76rem;letter-spacing:.06em;padding:.42rem .8rem;border-radius:999px;
+  border:1px solid var(--border);background:var(--surface-soft);color:var(--text-dim)}
+.chip b{color:var(--accent);font-weight:500}
+
+/* vocab */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.1rem;margin-top:1.1rem}
+.vocab-group{border:1px solid var(--border);border-radius:14px;padding:1rem 1.1rem;background:var(--surface-soft)}
+.vocab-group h3{font-size:.8rem;font-family:var(--font-mono);font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem}
+.vocab-list{display:flex;flex-wrap:wrap;gap:.5rem .65rem;align-items:baseline}
+.vocab-word{cursor:pointer;font-weight:700;padding:.18rem .5rem;border-radius:8px;border:1px solid transparent;
+  border-bottom:1.5px dotted currentColor;transition:background .18s,transform .18s,border-color .18s}
+.vocab-word:hover{background:rgba(255,255,255,.07);transform:translateY(-1px);border-color:var(--border)}
+.vocab-word.pos-noun{color:var(--pos-noun)}
+.vocab-word.pos-verb{color:var(--pos-verb)}
+.vocab-word.pos-adj{color:var(--pos-adj)}
+.vocab-word.pos-adv{color:var(--pos-adv)}
+.vocab-word.pos-phrase{color:var(--pos-phrase)}
+.vocab-word.pos-idiom{color:var(--pos-idiom)}
+.vocab-word.pos-other{color:var(--pos-other)}
+.sep{color:var(--text-dim);opacity:.5}
+.legend{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;margin-top:1.1rem;font-family:var(--font-mono);font-size:.72rem;color:var(--text-dim)}
+.legend span{display:inline-flex;align-items:center;gap:.4em}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* tooltip */
+#vocabTooltip{position:fixed;left:-9999px;top:-9999px;z-index:120;max-width:290px;
+  background:var(--surface-strong);border:1px solid var(--border-strong);border-radius:14px;padding:.95rem 1.05rem;
+  box-shadow:0 18px 44px rgba(0,0,0,.5);backdrop-filter:blur(14px);
+  opacity:0;transform:translateY(6px) scale(.97);transition:opacity .18s,transform .18s;pointer-events:none}
+#vocabTooltip.show{opacity:1;transform:none}
+#vocabTooltip .word{font-family:var(--font-display);font-weight:700;font-size:1.05rem;color:var(--accent);margin-bottom:.25rem}
+#vocabTooltip .pos{font-family:var(--font-mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem}
+#vocabTooltip .def{font-size:.95rem;line-height:1.55}
+#vocabTooltip .it{margin-top:.6rem;padding-top:.6rem;border-top:1px solid var(--border);font-size:.9rem;color:var(--accent-2);font-style:italic}
+
+/* media inside slides */
+.photo{width:100%;height:clamp(220px,34vh,320px);object-fit:cover;border-radius:14px;border:1px solid var(--border);
+  box-shadow:0 14px 34px rgba(0,0,0,.4);background:var(--bg-deep)}
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:.9rem 0}
+.photo-pair img{width:100%;height:clamp(180px,28vh,260px);object-fit:cover;border-radius:14px;border:1px solid var(--border);background:var(--bg-deep)}
+.ta{width:100%;min-height:110px;resize:vertical;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:14px;
+  color:var(--text);padding:.85rem 1rem;font:inherit;font-size:1rem;line-height:1.6;margin:.8rem 0}
+.ta::placeholder{color:var(--text-dim);opacity:.7}
+.ta:focus{outline:none;border-color:var(--border-strong);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.16)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:.5rem;min-height:46px;padding:.68rem 1.25rem;border-radius:12px;cursor:pointer;
+  font-size:.98rem;font-weight:700;border:1px solid var(--border-strong);color:var(--text);
+  background:linear-gradient(180deg,rgba(var(--accent-rgb),.2),rgba(var(--accent-rgb),.08));
+  transition:transform .18s,box-shadow .18s,background .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px -8px var(--glow);background:linear-gradient(180deg,rgba(var(--accent-rgb),.3),rgba(var(--accent-rgb),.12))}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn--ghost{background:var(--surface-soft);border-color:var(--border);color:var(--text-dim)}
+.btn--ghost:hover{color:var(--text);box-shadow:none}
+.btn--primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04070f;border-color:transparent;font-weight:800}
+.btn--primary:hover{box-shadow:0 14px 34px -10px var(--glow)}
+.btn-row{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.1rem}
+.answer{margin-top:1rem;padding:1rem 1.15rem;border-radius:14px;border-left:3px solid var(--good);
+  background:rgba(var(--good-rgb),.1);border-top:1px solid rgba(var(--good-rgb),.26);
+  border-right:1px solid rgba(var(--good-rgb),.26);border-bottom:1px solid rgba(var(--good-rgb),.26);
+  color:var(--text);font-size:1rem;line-height:1.7;display:none}
+.answer.open{display:block;animation:rise .4s ease both}
+.answer .tag{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--good);display:block;margin-bottom:.5rem}
+
+/* expression list */
+.expr{display:grid;gap:.7rem;margin-top:1rem}
+.expr div{display:flex;flex-wrap:wrap;align-items:baseline;gap:.6rem;padding:.75rem .95rem;border:1px solid var(--border);
+  border-radius:12px;background:var(--surface-soft);font-size:1.05rem}
+.expr em{font-family:var(--font-display);font-style:normal;font-weight:600;color:var(--accent)}
+.expr small{margin-left:auto;font-family:var(--font-mono);font-size:.76rem;color:var(--text-dim)}
+
+/* grammar */
+.grammar{font-size:clamp(1.05rem,1.9vw,1.25rem);line-height:1.9;margin:.6em 0}
+.grammar strong{color:var(--accent);font-weight:700;background:rgba(var(--accent-rgb),.12);padding:.05em .35em;border-radius:6px}
+
+/* summary */
+.summary-list{list-style:none;display:grid;gap:.7rem;margin-top:1rem}
+.summary-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:1.05rem}
+.summary-list li::before{content:'';flex:0 0 auto;width:8px;height:8px;margin-top:.62em;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.fineprint{margin-top:1.4rem;padding-top:1rem;border-top:1px solid var(--border);font-size:.76rem;line-height:1.6;color:var(--text-dim)}
+
+/* ============ CHROME ============ */
+.progress{position:fixed;top:0;left:0;height:3px;z-index:130;width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 12px var(--glow);transition:width .4s cubic-bezier(.2,.8,.2,1)}
+.nav{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:130;
+  display:flex;align-items:center;gap:.6rem;padding:.5rem .6rem;border-radius:999px;
+  background:var(--surface-strong);border:1px solid var(--border);
+  backdrop-filter:blur(18px);box-shadow:0 16px 40px rgba(0,0,0,.5)}
+.nav button{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;min-height:44px;min-width:44px;
+  padding:.5rem 1rem;border-radius:999px;cursor:pointer;font-size:.92rem;font-weight:700;
+  border:1px solid var(--border);background:var(--surface-soft);color:var(--text);
+  transition:background .18s,border-color .18s,transform .18s,opacity .18s}
+.nav button:hover:not(:disabled){border-color:var(--border-strong);background:rgba(var(--accent-rgb),.14);transform:translateY(-1px)}
+.nav button:disabled{opacity:.35;cursor:not-allowed}
+.counter{font-family:var(--font-mono);font-size:.82rem;color:var(--text-dim);min-width:58px;text-align:center}
+.icon-btn{position:fixed;top:16px;z-index:130;width:46px;height:46px;padding:0;border-radius:50%;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--surface-strong);border:1px solid var(--border);color:var(--text);
+  backdrop-filter:blur(14px);transition:transform .2s,border-color .2s,color .2s,box-shadow .2s}
+.icon-btn:hover{transform:scale(1.08);border-color:var(--border-strong);color:var(--accent);box-shadow:0 8px 22px -8px var(--glow)}
+.icon-btn svg{width:21px;height:21px}
+.icon-btn.off{color:var(--text-dim)}
+#themeBtn{right:16px}
+#muteBtn{right:72px}
+
+/* swish sweep */
+#swish{position:fixed;inset:-25% -70%;z-index:110;pointer-events:none;opacity:0;mix-blend-mode:screen;
+  background:linear-gradient(105deg,transparent 22%,rgba(var(--accent-rgb),.26) 44%,rgba(255,255,255,.5) 50%,rgba(var(--accent-rgb),.26) 56%,transparent 78%)}
+#swish.go{animation:sweep .55s cubic-bezier(.7,0,.2,1) forwards}
+#swish.rev{animation:sweepr .55s cubic-bezier(.7,0,.2,1) forwards}
+@keyframes sweep{0%{opacity:1;transform:translateX(-110%) skewX(-14deg)}100%{opacity:1;transform:translateX(110%) skewX(-14deg)}}
+@keyframes sweepr{0%{opacity:1;transform:translateX(110%) skewX(14deg)}100%{opacity:1;transform:translateX(-110%) skewX(14deg)}}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:760px){
+  body{font-size:16px}
+  .content{max-width:94vw;padding:1.15rem 1.05rem;border-radius:16px}
+  .photo-pair{grid-template-columns:1fr}
+  .photo{height:210px}
+  .nav{gap:.4rem;padding:.4rem .45rem;bottom:12px;max-width:96vw}
+  .nav button{padding:.45rem .8rem;font-size:.86rem}
+  .counter{min-width:48px;font-size:.76rem}
+  #themeBtn{right:12px;top:12px;width:42px;height:42px}
+  #muteBtn{right:62px;top:12px;width:42px;height:42px}
+  .expr div{font-size:.98rem}
+  .expr small{margin-left:0;flex-basis:100%}
+  .chips{gap:.4rem}
+  .chip{font-size:.7rem}
+}
+@media(max-height:620px){
+  .slide{padding-top:10px;padding-bottom:calc(var(--nav-h) + 30px)}
+  .kicker{margin-bottom:.5em}
+  .photo{height:170px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  #swish{display:none}
+}
 </style>
 </head>
-<body>
+<body data-theme="">
+<div class="mesh" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="grain" aria-hidden="true"></div>
 <div class="progress" id="progress"></div>
-<div id="vocabTooltip"><div class="word" style="font-weight:700;color:var(--accent);margin-bottom:.3em"></div><div class="pos" style="font-size:.8rem;color:var(--cyan);margin-bottom:.5em"></div><div class="def" style="font-size:.9rem;color:#e2e8f0"></div><div class="it" style="font-size:.85rem;color:#fbbf24;margin-top:.5em;font-style:italic"></div></div>
+<div id="swish" aria-hidden="true"></div>
 
-<section class="slide active" data-slide="0" style="background-image:url('https://images.unsplash.com/photo-1520250497591-152694812857?w=1600&q=80');background-size:cover;background-position:center">
-  <div class="content"><h1 style="font-size:clamp(2rem,4vw,3rem);background:linear-gradient(135deg,var(--accent),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:.3em;text-align:center">Shopping & Money</h1>
-  <p style="font-size:1rem;color:#e2e8f0;text-align:center;margin-bottom:.5em">Travel vocabulary for Italian speakers · B1 + B2 level</p>
+<button class="icon-btn" id="themeBtn" type="button" title="Cycle colour theme" aria-label="Cycle colour theme">
+  <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+</button>
+<button class="icon-btn" id="muteBtn" type="button" title="Toggle sound" aria-label="Toggle sound" aria-pressed="false">
+  <svg id="muteIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"></svg>
+</button>
+
+<main id="deck">
+<!-- 0 -->
+<section class="slide active" data-slide="0" data-bg="https://images.pexels.com/photos/8387807/pexels-photo-8387807.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Hands selecting colorful sweaters on a clothing rack inside a modern boutique.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content center">
+    <h1 class="title">Shopping & Money</h1>
+  <p class="subtitle">Travel vocabulary for Italian speakers · B1 + B2 level</p>
   <p class="label">Key vocabulary (click for Italian definition):</p>
-  <p style="line-height:1.8;font-size:1rem;margin-top:.8em"><span class="vocab-word level-b1" data-word="price-tag">price tag</span> · <span class="vocab-word level-b2" data-word="checkout-counter">checkout counter</span> · <span class="vocab-word level-b2" data-word="cashier-scanner">cashier scanner</span> · <span class="vocab-word level-b2" data-word="exchange-rate">exchange rate</span></p>
+  <div class="vocab-grid"><div class="vocab-group"><h3>noun</h3><div class="vocab-list"><span class="vocab-word pos-noun" data-word="price-tag">price tag</span> · <span class="vocab-word pos-noun" data-word="checkout-counter">checkout counter</span> · <span class="vocab-word pos-noun" data-word="cashier-scanner">cashier scanner</span> · <span class="vocab-word pos-noun" data-word="exchange-rate">exchange rate</span></div></div></div>
+    
+    <div class="legend"><span><i class="dot" style="background:var(--pos-noun)"></i>noun</span></div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="1">
-  <div class="content"><p class="label">Questions · Answer in full sentences:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">What should travelers know about shopping & money?</p>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a1').classList.toggle('show')">Reveal</button>
-  <div class="answer-reveal" id="a1">Learn key terms beforehand and ask locals respectfully for help when needed. Preparation prevents common misunderstandings.</div>
+<!-- 1 -->
+<section class="slide" data-slide="1" data-bg="https://images.pexels.com/photos/10689371/pexels-photo-10689371.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="A collection of stylish dresses on hangers in a bright boutique setting.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Questions · Answer in full sentences:</p>
+  <p class="q">Tell me about a purchase you regret or are proud of — what was the story behind it?</p>
+  <button class="btn" data-target="a1" type="button">Reveal</button>
+  <div class="answer" id="a1"><span class="tag">Model answer</span>Learn key terms beforehand and ask locals respectfully for help when needed. Preparation prevents common misunderstandings.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="2">
-  <div class="content"><p class="label">Rearrange the words:</p>
-  <p style="font-size:1.1rem;color:var(--accent);text-align:center;margin:.8em 0">[Please / can / I / get / assistance / with / this?]</p>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('o1').classList.toggle('show')">Check</button>
-  <div class="answer-reveal" id="o1">Please can I get assistance with this?</div>
+<!-- 2 -->
+<section class="slide" data-slide="2" data-bg="https://images.pexels.com/photos/11911863/pexels-photo-11911863.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Chic fashion display at a clothing store with stylish reflections.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Rearrange the words:</p>
+  <p class="q center" style="font-family:var(--font-mono)">[Please / can / I / get / assistance / with / this?]</p>
+  <button class="btn" data-target="o1" type="button">Check</button>
+  <div class="answer" id="o1"><span class="tag">Model answer</span>Please can I get assistance with this?</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="3">
-  <div class="content"><p class="label">Describe the picture:</p>
-  <img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/train-station-1283703_1280.jpg" style="width:100%;height:180px;object-fit:cover;border-radius:12px;margin:.6em 0" onerror="this.style.display='none'">
-  <textarea placeholder="Type your description..." style="width:100%;min-height:100px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:12px;color:#e2e8f0;padding:10px;font-size:.95rem"></textarea>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('d1').classList.toggle('show')">Model</button>
-  <div class="answer-reveal" id="d1">People navigate the transport hub efficiently. Digital displays guide passengers. Modern architecture combines functionality with design.</div>
+<!-- 3 -->
+<section class="slide" data-slide="3" data-bg="https://images.pexels.com/photos/13532891/pexels-photo-13532891.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Close-up of clothing on hangers inside a fashion store window.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Describe the picture:</p>
+  <img class="photo" src="https://images.pexels.com/photos/33803366/pexels-photo-33803366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Spacious indoor shopping mall with a skylight roof in Portland, Oregon, showcasing modern architecture." width="4032" height="3024" decoding="async">
+  <textarea class="ta"></textarea>
+  <button class="btn" data-target="d1" type="button">Model</button>
+  <div class="answer" id="d1"><span class="tag">Model answer</span>People navigate the transport hub efficiently. Digital displays guide passengers. Modern architecture combines functionality with design.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="4">
-  <div class="content"><p class="label">Questions · Your experience:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Any challenges travelers might face?</p>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a2').classList.toggle('show')">Reveal</button>
-  <div class="answer-reveal" id="a2">Language barriers, unfamiliar procedures, and local customs differ. Research and basic phrases help overcome these obstacles.</div>
+<!-- 4 -->
+<section class="slide" data-slide="4" data-bg="https://images.pexels.com/photos/5864245/pexels-photo-5864245.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Explore trendy fashion displayed in an elegant boutique setting, showcasing diverse clothing styles.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Questions · Your experience:</p>
+  <p class="q">Any challenges travelers might face?</p>
+  <button class="btn" data-target="a2" type="button">Reveal</button>
+  <div class="answer" id="a2"><span class="tag">Model answer</span>Language barriers, unfamiliar procedures, and local customs differ. Research and basic phrases help overcome these obstacles.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="5">
-  <div class="content"><p class="label">Compare the pictures:</p>
-  <div style="display:flex;gap:10px;margin:.6em 0;flex-wrap:wrap">
-    <img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/bus-1283702_1280.jpg" style="flex:1;min-width:100px;height:140px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'">
-    <img src="https://cdn.pixabay.com/photo/2016/03/27/19/51/train-1283704_1280.jpg" style="flex:1;min-width:100px;height:140px;object-fit:cover;border-radius:12px" onerror="this.style.display='none'">
-  </div>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('c1').classList.toggle('show')">Model</button>
-  <div class="answer-reveal" id="c1">Both serve public transport. Each method suits different distances and passenger volumes. Infrastructure quality varies by location.</div>
-  </div>
-</section>
-
-<section class="slide" data-slide="6">
-  <div class="content"><p class="label">Deeper questions:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">How does this differ in Italy?</p>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('a3').classList.toggle('show')">Reveal</button>
-  <div class="answer-reveal" id="a3">Local customs, operating hours, and service style differ. Italians value personal interaction over automation when possible.</div>
+<!-- 5 -->
+<section class="slide" data-slide="5" data-bg="https://images.pexels.com/photos/5531711/pexels-photo-5531711.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Modern clothing rack in a boutique with diverse garments and wooden hangers">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Compare the pictures:</p>
+  <div class="photo-pair">
+      <img src="https://images.pexels.com/photos/264502/pexels-photo-264502.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Explore the sleek and multi-level design of Mall of Berlin, showcasing modern architecture and shoppers." width="4608" height="3456" decoding="async">
+      <img src="https://images.pexels.com/photos/29406967/pexels-photo-29406967.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Holiday decorations and festive atmosphere inside a shopping mall." width="6000" height="4000" decoding="async">
+    </div>
+  <button class="btn" data-target="c1" type="button">Model</button>
+  <div class="answer" id="c1"><span class="tag">Model answer</span>Both serve public transport. Each method suits different distances and passenger volumes. Infrastructure quality varies by location.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="7">
-  <div class="content"><p class="label">Speaking · 2 minutes:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Describe a related travel experience.</p>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('s1').classList.toggle('show')">Model</button>
-  <div class="answer-reveal" id="s1">I once needed help and a local explained patiently. Good communication bridges cultural differences. Politeness opens doors anywhere.</div>
+<!-- 6 -->
+<section class="slide" data-slide="6" data-bg="https://images.pexels.com/photos/29906028/pexels-photo-29906028.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="A modern clothing display featuring black and white shirts on hangers inside a fashion store.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Deeper questions:</p>
+  <p class="q">How does this differ in Italy?</p>
+  <button class="btn" data-target="a3" type="button">Reveal</button>
+  <div class="answer" id="a3"><span class="tag">Model answer</span>Local customs, operating hours, and service style differ. Italians value personal interaction over automation when possible.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="8">
-  <div class="content"><p class="label">Vocabulary review - B2+ words:</p>
-  <p style="line-height:1.8;font-size:1rem"><span class="vocab-word level-b1" data-word="shopping-cart">shopping cart</span> · <span class="vocab-word level-b2" data-word="customer-service">customer service</span> · <span class="vocab-word level-b2p" data-word="refund-policy">refund policy</span> · <span class="vocab-word level-b1" data-word="payment-method">payment method</span></p>
+<!-- 7 -->
+<section class="slide" data-slide="7" data-bg="https://images.pexels.com/photos/1488470/pexels-photo-1488470.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="A variety of colorful jackets hanging on a clothes rack in a stylish store.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Speaking · 2 minutes:</p>
+  <p class="q">Describe a related travel experience.</p>
+  <button class="btn" data-target="s1" type="button">Model</button>
+  <div class="answer" id="s1"><span class="tag">Model answer</span>I once needed help and a local explained patiently. Good communication bridges cultural differences. Politeness opens doors anywhere.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="9">
-  <div class="content"><p class="label">Grammar · Passive voice:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Service <strong>is provided</strong>. Requests <strong>are handled</strong>. Help <strong>is available</strong>.</p>
-  <button class="ex-btn" onclick="this.classList.toggle('revealed');document.getElementById('g1').classList.toggle('show')">More</button>
-  <div class="answer-reveal" id="g1">Information <strong>has been updated</strong>. Procedures <strong>have changed</strong>. Guidelines <strong>are posted</strong> clearly.</div>
+<!-- 8 -->
+<section class="slide" data-slide="8" data-bg="https://images.pexels.com/photos/37661503/pexels-photo-37661503.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Explore the historic Victorian shopping arcade in Preston, showcasing stunning architecture.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Vocabulary review - B2+ words:</p>
+  <div class="vocab-grid"><div class="vocab-group"><h3>noun</h3><div class="vocab-list"><span class="vocab-word pos-noun" data-word="shopping-cart">shopping cart</span> · <span class="vocab-word pos-noun" data-word="customer-service">customer service</span> · <span class="vocab-word pos-noun" data-word="refund-policy">refund policy</span> · <span class="vocab-word pos-noun" data-word="payment-method">payment method</span></div></div></div>
+    
+    <div class="legend"><span><i class="dot" style="background:var(--pos-noun)"></i>noun</span></div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="10">
-  <div class="content"><p class="label">Useful expressions:</p>
-  <p style="font-size:1rem;line-height:1.8;margin:.8em 0">Excuse me · Please · Thank you · Sorry</p>
+<!-- 9 -->
+<section class="slide" data-slide="9" data-bg="https://images.pexels.com/photos/37274790/pexels-photo-37274790.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Elegant indoor view of a modern shopping mall with a glass ceiling and stylish lighting.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Grammar · Passive voice:</p>
+  <p class="grammar">Service <strong>is provided</strong>. Requests <strong>are handled</strong>. Help <strong>is available</strong>.</p>
+  <button class="btn" data-target="g1" type="button">More</button>
+  <div class="answer" id="g1"><span class="tag">Model answer</span>Information <strong>has been updated</strong>. Procedures <strong>have changed</strong>. Guidelines <strong>are posted</strong> clearly.</div>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="11">
-  <div class="content"><p class="label">Cultural tip:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">In Italy, greetings matter. Start with 'Buongiorno'. Hand gestures express meaning. Patience and respect go further than frustration.</p>
+<!-- 10 -->
+<section class="slide" data-slide="10" data-bg="https://images.pexels.com/photos/40123456/pexels-photo-40123456.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="People on an escalator in a bustling contemporary shopping mall with various stores.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Useful expressions:</p>
+  <p class="q">Excuse me · Please · Thank you · Sorry</p>
+  
   </div>
 </section>
 
-<section class="slide" data-slide="12">
-  <div class="content"><p class="label">Summary:</p>
-  <p style="font-size:1rem;line-height:1.6;margin:.8em 0">Learned vocabulary and phrases. Practice describing experiences.</p>
+<!-- 11 -->
+<section class="slide" data-slide="11" data-bg="https://images.pexels.com/photos/13425897/pexels-photo-13425897.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Explore a spacious and contemporary shopping mall featuring trendy shops, lush greenery, and stylish architecture.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Cultural tip:</p>
+  <p class="body-copy">In Italy, greetings matter. Start with 'Buongiorno'. Hand gestures express meaning. Patience and respect go further than frustration.</p>
+  
   </div>
 </section>
 
-<div class="nav"><button id="prev">Prev</button><span id="navCounter" class="counter">1 / 12</span><button id="next">Next</button></div>
-<button class="theme-cycle-btn" id="themeCycleBtn" title="Cycle theme"></button>
+<!-- 12 -->
+<section class="slide" data-slide="12" data-bg="https://images.pexels.com/photos/19335728/pexels-photo-19335728.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" data-bg-alt="Interior view of a modern shopping mall featuring a striking glass ceiling and multiple floors.">
+  <div class="bg-layer" aria-hidden="true"></div>
+  <div class="content">
+    <p class="label">Summary:</p>
+  <p class="body-copy">Learned vocabulary and phrases. Practice describing experiences.</p>
+    <div class="btn-row"><a class="btn btn--primary" href="lesson-6-directions.html">Next lesson
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <button class="btn btn--ghost" id="restartBtn" type="button">Restart lesson</button></div>
+    <p class="fineprint">Independent practice resource for exam-style speaking preparation. Not affiliated with, endorsed by, or connected to IELTS, IDP Education, British Council, or Cambridge Assessment English. IELTS is a registered trademark of its respective owners. Photographs: Pexels (free to use).</p>
+  
+  </div>
+</section>
+</main>
+
+<div class="nav">
+  <button id="prev" type="button" aria-label="Previous slide">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+    Prev
+  </button>
+  <span class="counter" id="navCounter">1 / 13</span>
+  <button id="next" type="button" aria-label="Next slide">
+    Next
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<div id="vocabTooltip" role="tooltip" aria-hidden="true">
+  <div class="word"></div><div class="pos"></div><div class="def"></div><div class="it"></div>
+</div>
 
 <script>
-(function(){var t=localStorage.getItem('travel-theme');if(t&&t!=='1'){var themes=['','midnight','forest','rose','lavender','sunset','cosmos','ice'];document.body.setAttribute('data-theme',themes[parseInt(t)]||'');}})();
-var slides=document.querySelectorAll('.slide');
-var vocab={'price-tag':{'pos':'noun','def':'price label','it':'etichetta prezzo'},'checkout-counter':{'pos':'noun','def':'payment desk','it':'cassa'},'cashier-scanner':{'pos':'noun','def':'barcode scanner','it':'scanner cassiere'},'exchange-rate':{'pos':'noun','def':'currency conversion','it':'tasso di cambio'},'shopping-cart':{'pos':'noun','def':'cart for goods','it':'carrello'},'customer-service':{'pos':'noun','def':'help desk','it':'servizio clienti'},'refund-policy':{'pos':'noun','def':'return rules','it':'polizza reso'},'payment-method':{'pos':'noun','def':'way to pay','it':'metodo pagamento'}};
-var current=0;
-function update(){slides.forEach((s,i)=>s.classList.toggle('active',i===current));document.getElementById('progress').style.width=((current+1)/slides.length*100)+'%';document.getElementById('navCounter').textContent=(current+1)+' / '+slides.length;document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1}
-function next(){if(current<slides.length-1)current++;update()}
-function prev(){if(current>0)current--;update()}
-document.getElementById('next').addEventListener('click',next);
-document.getElementById('prev').addEventListener('click',prev);
-document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')next();if(e.key==='ArrowLeft')prev()});
-update();
-document.querySelectorAll('.vocab-word').forEach(el=>el.addEventListener('click',e=>{var v=vocab[e.target.dataset.word];if(v){var t=document.getElementById('vocabTooltip');t.querySelector('.word').textContent=e.target.textContent;t.querySelector('.pos').textContent=v.pos;t.querySelector('.def').textContent=v.def;t.querySelector('.it').textContent='Italian: '+v.it;t.classList.add('show');var r=e.target.getBoundingClientRect();t.style.left=r.left+r.width/2+'px';t.style.top=r.bottom+10+'px'}}));
-document.addEventListener('click',e=>{if(!e.target.closest('.vocab-word'))document.getElementById('vocabTooltip').classList.remove('show')});
+(function(){
+  'use strict';
+
+  /* ---------- theme ---------- */
+  var THEME_ORDER = ['', 'midnight', 'forest', 'rose', 'lavender', 'sunset', 'cosmos', 'ice'];
+  var THEME_LABEL = { '':'Ocean', midnight:'Midnight', forest:'Forest', rose:'Rose', lavender:'Lavender', sunset:'Sunset', cosmos:'Cosmos', ice:'Ice' };
+  var THEME_ICONS = {
+    '':        '<path d="M12 3s6 6.3 6 10.5a6 6 0 0 1-12 0C6 9.3 12 3 12 3z"/>',
+    midnight:  '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+    forest:    '<path d="M11 20A7 7 0 0 1 4 13c0-5 4-9 16-9 0 12-5 16-9 16z"/><path d="M4 21c4-4 7-7 12-9"/>',
+    rose:      '<path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/>',
+    lavender:  '<path d="M6.5 19a4 4 0 0 1-.5-8 6 6 0 0 1 11.6-1.5A3.5 3.5 0 0 1 17.5 19z"/>',
+    sunset:    '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    cosmos:    '<path d="M12 2.5l2.9 6 6.6.9-4.8 4.6 1.2 6.5L12 17.4 6.1 20.5l1.2-6.5L2.5 9.4l6.6-.9z"/>',
+    ice:       '<path d="M12 2v20M4 6l16 12M20 6L4 18"/>'
+  };
+  var SOUND_ON  = '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/>';
+  var SOUND_OFF = '<path d="M11 5 6 9H3v6h3l5 4z"/><path d="M16 9l6 6M22 9l-6 6"/>';
+
+  var themeIdx = 0;
+  try { themeIdx = Math.max(0, THEME_ORDER.indexOf(localStorage.getItem('travel-theme') || '')); } catch (e) {}
+  var themeBtn = document.getElementById('themeBtn');
+  var themeIcon = document.getElementById('themeIcon');
+  var muteBtn = document.getElementById('muteBtn');
+  var muteIcon = document.getElementById('muteIcon');
+
+  function applyTheme(n){
+    themeIdx = ((n % THEME_ORDER.length) + THEME_ORDER.length) % THEME_ORDER.length;
+    var name = THEME_ORDER[themeIdx];
+    if (name) document.body.setAttribute('data-theme', name);
+    else document.body.removeAttribute('data-theme');
+    themeIcon.innerHTML = THEME_ICONS[name];
+    themeBtn.setAttribute('aria-label', 'Cycle colour theme (current: ' + (THEME_LABEL[name] || 'Ocean') + ')');
+    try { localStorage.setItem('travel-theme', name); } catch (e) {}
+  }
+  themeBtn.addEventListener('click', function(){ applyTheme(themeIdx + 1); blip(660); });
+
+  /* ---------- sound (Web Audio swish) ---------- */
+  var AC = null, muted = false;
+  try { muted = localStorage.getItem('travel-muted') === '1'; } catch (e) {}
+  function ac(){
+    if (!AC) { try { AC = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { AC = null; } }
+    if (AC && AC.state === 'suspended') AC.resume();
+    return AC;
+  }
+  function noiseBuffer(c, dur){
+    var b = c.createBuffer(1, Math.floor(c.sampleRate * dur), c.sampleRate);
+    var d = b.getChannelData(0), i;
+    for (i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+    return b;
+  }
+  function swish(dir){
+    if (muted) return;
+    var c = ac(); if (!c) return;
+    var dur = 0.5, t = c.currentTime;
+    var src = c.createBufferSource(); src.buffer = noiseBuffer(c, dur);
+    var bp = c.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 1.1;
+    var f0 = dir > 0 ? 420 : 3400, f1 = dir > 0 ? 3400 : 420;
+    bp.frequency.setValueAtTime(f0, t);
+    bp.frequency.exponentialRampToValueAtTime(f1, t + dur);
+    var g = c.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.2, t + 0.07);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    src.connect(bp); bp.connect(g); g.connect(c.destination);
+    src.start(t); src.stop(t + dur + 0.02);
+  }
+  function blip(freq){
+    if (muted) return;
+    var c = ac(); if (!c) return;
+    var t = c.currentTime, o = c.createOscillator(), g = c.createGain();
+    o.type = 'sine'; o.frequency.setValueAtTime(freq || 620, t);
+    o.frequency.exponentialRampToValueAtTime((freq || 620) * 1.6, t + 0.09);
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.09, t + 0.02);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.16);
+    o.connect(g); g.connect(c.destination); o.start(t); o.stop(t + 0.18);
+  }
+  function renderMute(){
+    muteIcon.innerHTML = muted ? SOUND_OFF : SOUND_ON;
+    muteBtn.classList.toggle('off', muted);
+    muteBtn.setAttribute('aria-pressed', muted ? 'true' : 'false');
+    muteBtn.setAttribute('aria-label', muted ? 'Sound off — turn on' : 'Sound on — mute');
+    muteBtn.title = muted ? 'Sound off' : 'Sound on';
+  }
+  muteBtn.addEventListener('click', function(){
+    muted = !muted;
+    try { localStorage.setItem('travel-muted', muted ? '1' : '0'); } catch (e) {}
+    renderMute();
+    if (!muted) blip(720);
+  });
+  renderMute();
+
+  /* ---------- slides ---------- */
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var current = 0;
+  var progress = document.getElementById('progress');
+  var counter = document.getElementById('navCounter');
+  var prevBtn = document.getElementById('prev');
+  var nextBtn = document.getElementById('next');
+  var swishEl = document.getElementById('swish');
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* background images: load lazily, preload the neighbour */
+  function setBg(slide){
+    var layer = slide.querySelector('.bg-layer');
+    if (!layer || layer.dataset.done) return;
+    var url = slide.getAttribute('data-bg');
+    if (!url) { layer.dataset.done = '1'; return; }
+    var img = new Image();
+    img.onload = function(){
+      var el = document.createElement('img');
+      el.src = url; el.alt = slide.getAttribute('data-bg-alt') || '';
+      el.setAttribute('aria-hidden', 'true');
+      layer.appendChild(el);
+      layer.dataset.done = '1';
+    };
+    img.src = url;
+  }
+  function preloadNext(){
+    var n = current + 1;
+    while (n < slides.length && slides[n].querySelector('.bg-layer').dataset.done) n++;
+    if (n < slides.length) {
+      var u = slides[n].getAttribute('data-bg');
+      if (u) { var i = new Image(); i.src = u; }
+    }
+  }
+
+  var sweepTimer = null;
+  function sweep(dir){
+    if (reduceMotion) return;
+    swishEl.classList.remove('go', 'rev');
+    void swishEl.offsetWidth;
+    swishEl.classList.add(dir > 0 ? 'go' : 'rev');
+    clearTimeout(sweepTimer);
+    sweepTimer = setTimeout(function(){ swishEl.classList.remove('go', 'rev'); }, 620);
+  }
+
+  function goTo(n, silent){
+    if (n < 0 || n >= slides.length || n === current) { update(); return; }
+    var dir = n > current ? 1 : -1;
+    current = n;
+    if (!silent) { swish(dir); sweep(dir); }
+    update();
+  }
+  function next(){ goTo(current + 1); }
+  function prev(){ goTo(current - 1); }
+
+  function update(){
+    slides.forEach(function(s, i){
+      var on = i === current;
+      s.classList.toggle('active', on);
+      s.setAttribute('aria-hidden', on ? 'false' : 'true');
+      if (on) s.removeAttribute('inert'); else s.setAttribute('inert', '');
+    });
+    progress.style.width = ((current + 1) / slides.length * 100) + '%';
+    counter.textContent = (current + 1) + ' / ' + slides.length;
+    prevBtn.disabled = current === 0;
+    nextBtn.disabled = current === slides.length - 1;
+    setBg(slides[current]);
+    preloadNext();
+  }
+
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  var startBtn = document.getElementById('startBtn');
+  if (startBtn) startBtn.addEventListener('click', function(){ blip(700); next(); });
+  var restartBtn = document.getElementById('restartBtn');
+  if (restartBtn) restartBtn.addEventListener('click', function(){ blip(520); goTo(0); });
+  document.addEventListener('keydown', function(e){
+    if (e.target && /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+    else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    else if (e.key === 'Home') { e.preventDefault(); goTo(0); }
+    else if (e.key === 'End') { e.preventDefault(); goTo(slides.length - 1); }
+    else if (e.key === 'm' || e.key === 'M') { muteBtn.click(); }
+    else if (e.key === 't' || e.key === 'T') { themeBtn.click(); }
+  });
+
+  /* ---------- reveal answers ---------- */
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('[data-target]') : null;
+    if (!btn) return;
+    var box = document.getElementById(btn.getAttribute('data-target'));
+    if (!box) return;
+    var open = box.classList.toggle('open');
+    btn.textContent = open ? 'Hide' : btn.getAttribute('data-label');
+    if (open) blip(880);
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-target]'), function(b){
+    b.setAttribute('data-label', b.textContent.trim());
+  });
+
+  /* ---------- vocab tooltip ---------- */
+  var vocab = {
+    'price-tag': { pos:'noun', def:'price label', it:'etichetta prezzo' },
+    'checkout-counter': { pos:'noun', def:'payment desk', it:'cassa' },
+    'cashier-scanner': { pos:'noun', def:'barcode scanner', it:'scanner cassiere' },
+    'exchange-rate': { pos:'noun', def:'currency conversion', it:'tasso di cambio' },
+    'shopping-cart': { pos:'noun', def:'cart for goods', it:'carrello' },
+    'customer-service': { pos:'noun', def:'help desk', it:'servizio clienti' },
+    'refund-policy': { pos:'noun', def:'return rules', it:'polizza reso' },
+    'payment-method': { pos:'noun', def:'way to pay', it:'metodo pagamento' }
+  };
+  var tip = document.getElementById('vocabTooltip');
+  function hideTip(){ tip.classList.remove('show'); tip.setAttribute('aria-hidden', 'true'); }
+  document.addEventListener('click', function(e){
+    var w = e.target.closest ? e.target.closest('.vocab-word') : null;
+    if (!w) { hideTip(); return; }
+    var v = vocab[w.getAttribute('data-word')];
+    if (!v) return;
+    tip.querySelector('.word').textContent = w.textContent.trim();
+    tip.querySelector('.pos').textContent = v.pos;
+    tip.querySelector('.def').textContent = v.def;
+    tip.querySelector('.it').textContent = 'Italiano: ' + v.it;
+    tip.classList.add('show');
+    tip.setAttribute('aria-hidden', 'false');
+    var r = w.getBoundingClientRect();
+    var tw = Math.min(290, window.innerWidth - 24);
+    var left = Math.max(12, Math.min(r.left + r.width / 2 - tw / 2, window.innerWidth - tw - 12));
+    var top = r.bottom + 10;
+    if (top + 150 > window.innerHeight) top = Math.max(12, r.top - 160);
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+    blip(980);
+  });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hideTip(); });
+
+  applyTheme(themeIdx);
+  update();
+})();
 </script>
-<p style="text-align:center;font-size:.7rem;color:#6b7280;padding:12px 24px;border-top:1px solid rgba(255,255,255,.08);margin-top:20px;">Disclaimer: This is an independent practice resource for IELTS-style exam preparation. It is not affiliated with, endorsed by, or connected to IELTS, IDP Education, British Council, or Cambridge Assessment English. IELTS is a registered trademark of its respective owners.</p>
 </body>
 </html>

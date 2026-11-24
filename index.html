@@ -2,152 +2,71 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; media-src 'self' blob:; object-src 'none'; frame-ancestors 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Travel English for Italians - Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --bg-ink:#03030a; --bg-deep:#0a0a15; --bg-void:#020205;
-  --bg-card:rgba(255,255,255,0.04);
-  --accent-cyan:#22d3ee; --accent-cyan-dim:rgba(34,211,238,0.35);
-  --accent-violet:#8b5cf6; --text-cream:#f4f1ea;
-}
+:root{--bg:#03030a;--accent:#22d3ee;--violet:#8b5cf6;--text:#f4f1ea;--muted:#94a3b8}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:auto}
-body{
-  background:#000; color:var(--text-cream);
-  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  line-height:1.6; min-height:600vh;
-}
-#scene{position:fixed;inset:0;z-index:5;pointer-events:none}
-#matrix{position:fixed;inset:0;z-index:2;pointer-events:none;opacity:0;transition:opacity 1s ease}
-#matrix.visible{opacity:0.18}
-.loading-phase{position:sticky;top:0;height:100vh;width:100%;z-index:100;pointer-events:none}
-.label-sm{display:block;margin-bottom:.6rem;color:var(--accent-cyan);font-weight:600;letter-spacing:.22em;text-transform:uppercase;font-size:.75rem}
-.display-xl{font-family:'Oswald',sans-serif;font-size:clamp(3rem,9vw,8.5rem);line-height:.95;font-weight:700;color:var(--text-cream);text-transform:uppercase;letter-spacing:.04em}
-.display-md{font-family:'Oswald',sans-serif;font-size:clamp(2rem,5vw,4.5rem);line-height:1;font-weight:700;color:var(--text-cream);text-transform:uppercase;letter-spacing:.04em}
-.title-phase{position:sticky;top:0;height:100vh;width:100%;z-index:50;pointer-events:none;display:flex;align-items:center;justify-content:center}
-.title-stage{max-width:1100px;width:90%;padding:2rem;text-align:center}
-.hero-title{font-family:'Oswald',sans-serif;font-size:clamp(3.5rem,12vw,10rem);line-height:.9;letter-spacing:-.03em;text-transform:uppercase;overflow:hidden}
-.char-line{display:block}
-.char{display:inline-block;opacity:0;transform:translateY(20px);transition:all 0.4s cubic-bezier(0.2,0.8,0.2,1)}
-.char.visible{opacity:1;transform:translateY(0)}
-.slogan-phase{position:sticky;top:0;height:100vh;width:100%;z-index:45;pointer-events:none;display:flex;align-items:center;justify-content:center}
-.slogan-line{font-family:'Oswald',sans-serif;font-size:clamp(2rem,6vw,4rem);letter-spacing:.25em;text-transform:uppercase;opacity:0;transform:translateY(40px);transition:all 0.8s ease;color:var(--text-cream)}
-.slogan-line.visible{opacity:1;transform:translateY(0)}
-.slogan-char{display:inline-block;opacity:0;transform:translateY(20px)}
-.slogan-char.revealed{opacity:1;transform:translateY(0);transition:all 0.3s ease}
-.gallery-phase{position:sticky;top:0;height:100vh;width:100%;z-index:40;pointer-events:none;perspective:1200px;opacity:0;visibility:hidden}
-.gallery-phase.visible{opacity:1;visibility:visible;pointer-events:auto}
-.card-orbit{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
-.orbit-card{position:absolute;left:50%;top:50%;width:420px;height:300px;margin-left:-210px;margin-top:-150px;transform-style:preserve-3d;cursor:pointer;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94)}
-.card-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:var(--bg-card)}
-.card-front img{width:100%;height:100%;object-fit:cover}
-.card-back{transform:rotateY(180deg);display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--bg-card),var(--bg-deep))}
-.card-title{font-family:'Oswald',sans-serif;font-size:1.5rem;font-weight:600;text-align:center;padding:2rem}
-.orbit-card.active{z-index:100;transform:translateZ(120px) rotateY(0deg)}
-.orbit-card.side-left{z-index:50;transform:translateX(-380px) translateZ(-100px) rotateY(30deg);opacity:0.8}
-.orbit-card.side-right{z-index:50;transform:translateX(380px) translateZ(-100px) rotateY(-30deg);opacity:0.8}
-.orbit-card.far-left{z-index:30;transform:translateX(-550px) translateZ(-200px) rotateY(45deg);opacity:0.4}
-.orbit-card.far-right{z-index:30;transform:translateX(550px) translateZ(-200px) rotateY(-45deg);opacity:0.4}
-.orbit-card.hidden{opacity:0;pointer-events:none}
-.finale-phase{position:sticky;top:0;height:100vh;width:100%;z-index:30;pointer-events:none;display:flex;align-items:center;justify-content:center;background:var(--bg-void)}
-.finale-content{text-align:center;padding:2rem}
-.cta-button{padding:1.25rem 2.5rem;border-radius:8px;font-family:'Oswald',sans-serif;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:0.05em;transition:all 0.3s ease;margin:0 0.5rem}
-.cta-primary{background:linear-gradient(135deg,var(--accent-violet),var(--accent-cyan));color:#000}
-.cta-secondary{background:transparent;color:var(--text-cream);border:1px solid rgba(255,255,255,0.1)}
-#bottom-bar{position:fixed;bottom:0;left:0;right:0;height:70px;background:rgba(10,10,20,0.95);border-top:1px solid var(--accent-cyan-dim);display:flex;align-items:center;justify-content:center;gap:2rem;z-index:1000;opacity:0;transform:translateY(100%);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.2,0.8,0.2,1);backdrop-filter:blur(10px)}
-#bottom-bar.visible{opacity:1;transform:translateY(0)}
-@media (prefers-reduced-motion: reduce){.char,.slogan-char{transition:none;opacity:1;transform:none}}
-@media (max-width:768px){.display-xl{font-size:clamp(2.5rem,10vw,5rem)}.display-md{font-size:clamp(1.5rem,6vw,3rem)}.hero-title{font-size:clamp(2.5rem,10vw,6rem)}.orbit-card{width:280px;height:200px;margin-left:-140px;margin-top:-100px}.cta-button{padding:1rem 2rem;font-size:0.9rem}.title-stage{padding:1rem}.finale-content{padding:1rem}}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh;padding:2rem}
+h1{font-family:'Roboto Flex',sans-serif;font-size:clamp(2.5rem,6vw,4rem);text-align:center;margin-bottom:.5rem}
+.sub{text-align:center;color:var(--muted);margin-bottom:2rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;max-width:1300px;margin:0 auto}
+.card{background:#0f172a;border:1px solid rgba(255,255,255,.12);border-radius:16px;overflow:hidden;text-decoration:none;color:var(--text);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-6px);box-shadow:0 0 0 1px var(--accent),0 20px 40px rgba(34,211,238,.25)}
+.card img{width:100%;height:150px;object-fit:cover;display:block}
+.card-body{padding:.9rem 1.1rem}
+.card-title{font-family:'Roboto Flex',sans-serif;font-size:1.25rem;margin-bottom:.3rem}
+.card-desc{font-size:.85rem;color:var(--muted)}
+.progress{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,var(--accent),var(--violet));z-index:10;transition:width .3s}
+.vp{display:inline-block}
+.hero-btn{margin:1.5rem auto 2rem;display:block;padding:1rem 2.5rem;border:none;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--violet));color:#000;font-weight:700;font-size:1.05rem;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 30px rgba(34,211,238,.35)}
+.hero-btn:hover{transform:scale(1.08) translateY(-3px);box-shadow:0 16px 40px rgba(139,92,246,.45)}
+.hero-btn:active{transform:scale(.96)}
+.badge{position:fixed;top:12px;right:16px;z-index:10;background:#0f172a;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:.4rem .9rem;font-size:.85rem}
 </style>
 </head>
 <body>
-<canvas id="scene"></canvas>
-<canvas id="matrix"></canvas>
-<div class="loading-phase" id="loadingPhase"><div class="label-sm">Loading Travel Course</div></div>
-<div style="height:100vh"></div>
-<div class="title-phase" id="titlePhase"><div class="title-stage"><div class="label-sm" id="eyebrow">ESL Vocabulary Course</div><h1 class="display-xl hero-title" id="heroTitle"><span class="char-line"><span class="char">T</span><span class="char">R</span><span class="char">A</span><span class="char">V</span><span class="char">E</span><span class="char">L</span></span><br><span class="char-line"><span class="char">E</span><span class="char">N</span><span class="char">G</span><span class="char">L</span><span class="char">I</span><span class="char">S</span><span class="char">H</span></span></h1></div></div>
-<div style="height:100vh"></div><div style="height:100vh"></div><div style="height:100vh"></div><div style="height:100vh"></div><div style="height:100vh"></div>
-<div class="slogan-phase" id="sloganPhase"><div class="label-sm">12 Lessons for Italian Learners.</div><div class="slogan-line" id="sloganLine"></div></div>
-<div style="height:100vh"></div>
-<div class="gallery-phase" id="galleryPhase"><div class="label-sm" style="position:absolute;top:8vh;left:50%;transform:translateX(-50%)">Select Lesson</div><div class="card-orbit" id="cardOrbit"></div></div>
-<div style="height:100vh"></div>
-<div class="finale-phase" id="finalePhase"><div class="finale-content"><h2 class="display-md">Start Learning<br>Travel English</h2><div style="margin-top:2rem"><a href="index.html#galleryPhase" class="cta-button cta-primary">Begin Course</a></div></div></div>
-<div style="height:100vh"></div>
-<div id="bottom-bar"><a href="index.html#galleryPhase" class="cta-button cta-secondary">Lessons</a><button id="themeCycleBtn" class="cta-button cta-secondary">Theme</button></div>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<div class="progress" id="progress"></div>
+<div class="badge">🔥 <span id="streak">0</span> · <span id="done">0</span>/12</div>
+<canvas id="dotfield" style="position:fixed;inset:0;z-index:-1;pointer-events:none"></canvas>
+<h1 id="heroTitle">Travel English</h1>
+<p class="sub">12 interactive lessons for Italian speakers. Pick any topic.</p>
+<button class="hero-btn" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'})">Start Learning</button>
+<div class="grid" id="grid"></div>
 <script>
-try{
-let scrollProgress=0,targetScroll=0,scrollVelocity=0,lastScrollY=0;
-const PHASES={LOADING:{start:0,end:0.10},MESH_APPROACH:{start:0.10,end:0.45},TITLE:{start:0.45,end:0.85},SLOGAN:{start:0.85,end:0.90},GALLERY:{start:0.90,end:1.00},FINALE:{start:1.00,end:1.10}};
-function getPhase(p){if(p<PHASES.LOADING.end)return'LOADING';if(p<PHASES.MESH_APPROACH.end)return'MESH_APPROACH';if(p<PHASES.TITLE.end)return'TITLE';if(p<PHASES.SLOGAN.end)return'SLOGAN';if(p<PHASES.GALLERY.end)return'GALLERY';return'FINALE'}
-function getPhaseProgress(p,n){const phase=PHASES[n];return Math.max(0,Math.min(1,(p-phase.start)/(phase.end-phase.start)))}
-const sceneCanvas=document.getElementById('scene');
-const renderer=new THREE.WebGLRenderer({canvas:sceneCanvas,antialias:true,alpha:true});
-renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-renderer.setSize(window.innerWidth,window.innerHeight);
-const scene=new THREE.Scene();
-const camera=new THREE.PerspectiveCamera(50,window.innerWidth/window.innerHeight,0.1,1000);
-scene.add(new THREE.AmbientLight(0x404060,0.5));
-const keyLight=new THREE.PointLight(0x8b5cf6,1.5,50);keyLight.position.set(5,5,10);scene.add(keyLight);
-const rimLight=new THREE.PointLight(0x22d3ee,1,50);rimLight.position.set(-5,3,-5);scene.add(rimLight);
-const meshGroup=new THREE.Group();
-const bodyGeo=new THREE.CylinderGeometry(0.6,0.6,1.4,16);
-const bodyMat=new THREE.MeshStandardMaterial({color:0x1a1a2e,metalness:0.8,roughness:0.3,emissive:0x5b4dff,emissiveIntensity:0.2});
-const body=new THREE.Mesh(bodyGeo,bodyMat);body.position.y=0.5;meshGroup.add(body);
-const headGeo=new THREE.SphereGeometry(0.4,32,32);
-const headMat=new THREE.MeshStandardMaterial({color:0x2d2d44,metalness:0.9,roughness:0.2,emissive:0x8b5cf6,emissiveIntensity:0.3});
-const head=new THREE.Mesh(headGeo,headMat);head.position.y=1.8;meshGroup.add(head);
-scene.add(meshGroup);
-const torusGroup=new THREE.Group();
-const torus=new THREE.Mesh(new THREE.TorusGeometry(2.8,0.12,16,100),new THREE.MeshBasicMaterial({color:0x8b5cf6,wireframe:true}));
-torusGroup.add(torus);scene.add(torusGroup);
-const matrixCanvas=document.getElementById('matrix');
-const matrixCtx=matrixCanvas.getContext('2d');
-let matrixWidth=window.innerWidth,matrixHeight=window.innerHeight;
-matrixCanvas.width=matrixWidth;matrixCanvas.height=matrixHeight;
-const MATRIX_CHARS='アイウエオカキクケコサシスセソタチツテト0123456789ABCDEF';
-const MATRIX_FONT=18;
-class MatrixLayer{
-  constructor(opts){this.density=opts.density;this.speed=opts.speed;this.isResponsive=opts.isResponsive;this.streams=[];this.init()}
-  init(){const cols=Math.floor(matrixWidth/MATRIX_FONT);const count=Math.floor(cols*this.density);for(let i=0;i<count;i++){this.streams.push({x:Math.floor(Math.random()*cols)*MATRIX_FONT,y:Math.random()*matrixHeight,speed:this.speed*(0.8+Math.random()*0.4),chars:Array.from({length:15},()=>MATRIX_CHARS[Math.floor(Math.random()*MATRIX_CHARS.length)]),brightness:0.5+Math.random()*0.5})}}
-  spawn(v){if(!this.isResponsive||Math.abs(v)<0.5)return;const cols=Math.floor(matrixWidth/MATRIX_FONT);const count=Math.min(3,Math.floor(Math.abs(v)*0.2));for(let i=0;i<count;i++){this.streams.push({x:Math.floor(Math.random()*cols)*MATRIX_FONT,y:Math.sign(v)>0?-MATRIX_FONT*15:matrixHeight+MATRIX_FONT,speed:this.speed*(0.5+Math.random()*0.5)*Math.sign(v),chars:Array.from({length:15},()=>MATRIX_CHARS[Math.floor(Math.random()*MATRIX_CHARS.length)]),brightness:0.5+Math.random()*0.5})}}
-  update(){for(let s of this.streams)s.y+=s.speed;this.streams=this.streams.filter(s=>s.y>-MATRIX_FONT*15-100&&s.y<matrixHeight+100)}
-  draw(ctx){ctx.font=`${MATRIX_FONT}px monospace`;for(let s of this.streams){s.chars.forEach((ch,i)=>{const y=s.y+i*MATRIX_FONT;if(y<0||y>matrixHeight)return;const a=i===s.chars.length-1?s.brightness:s.brightness*(0.3+i/s.chars.length*0.4);ctx.fillStyle=`rgba(34,211,238,${a})`;ctx.fillText(ch,s.x,y)})}}
-}
-const bgMatrix=new MatrixLayer({density:0.35,speed:0.8,isResponsive:false});
-const fgMatrix=new MatrixLayer({density:0.15,speed:2,isResponsive:true});
-const cardData=[
-  {name:"Airport",img:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80",url:"lesson-1-airport.html"},
-  {name:"Hotel",img:"https://images.unsplash.com/photo-1520250497591-152694812857?w=600&q=80",url:"lesson-2-hotel.html"},
-  {name:"Transport",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",url:"lesson-3-transport.html"},
-  {name:"Restaurant",img:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80",url:"lesson-4-restaurant.html"},
-  {name:"Shopping",img:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80",url:"lesson-5-shopping.html"},
-  {name:"Directions",img:"https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=600&q=80",url:"lesson-6-directions.html"},
-  {name:"Emergency",img:"https://images.unsplash.com/photo-1582211594533-f680cdf25192?w=600&q=80",url:"lesson-7-emergency.html"},
-  {name:"Beach",img:"https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&q=80",url:"lesson-8-beach.html"},
-  {name:"Cultural Sites",img:"https://images.unsplash.com/photo-1559526322-c96f1d32c6b7?w=600&q=80",url:"lesson-9-sites.html"},
-  {name:"Weather",img:"https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=600&q=80",url:"lesson-10-weather.html"},
-  {name:"Planning",img:"https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80",url:"lesson-11-planning.html"},
-  {name:"Expressions",img:"https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80",url:"lesson-12-expressions.html"}
+const data=[
+ {name:"Airport",img:"https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=600&q=80",url:"lesson-1-airport.html",desc:"Check-in, boarding, luggage"},
+ {name:"Hotel",img:"https://images.unsplash.com/photo-1566073771259-6a8506099945?w=600&q=80",url:"lesson-2-hotel.html",desc:"Reservations, amenities"},
+ {name:"Transport",img:"https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80",url:"lesson-3-transport.html",desc:"Taxi, subway, tickets"},
+ {name:"Restaurant",img:"https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&q=80",url:"lesson-4-restaurant.html",desc:"Ordering, menus, tipping"},
+ {name:"Shopping",img:"https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=600&q=80",url:"lesson-5-shopping.html",desc:"Money, receipts, sizes"},
+ {name:"Directions",img:"https://images.unsplash.com/photo-1577717903315-1691ae25ab3f?w=600&q=80",url:"lesson-6-directions.html",desc:"Landmarks, turns"},
+ {name:"Emergency",img:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=600&q=80",url:"lesson-7-emergency.html",desc:"Help, police, embassy"},
+ {name:"Beach",img:"https://images.unsplash.com/photo-1473116763249-2faaef81ccda?w=600&q=80",url:"lesson-8-beach.html",desc:"Sun, sea, leisure"},
+ {name:"Cultural Sites",img:"https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&q=80",url:"lesson-9-sites.html",desc:"Museums, tours"},
+ {name:"Weather",img:"https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=600&q=80",url:"lesson-10-weather.html",desc:"Forecast, seasons"},
+ {name:"Planning",img:"https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80",url:"lesson-11-planning.html",desc:"Itinerary, visas"},
+ {name:"Expressions",img:"https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=600&q=80",url:"lesson-12-expressions.html",desc:"Polite phrases"}
 ];
-function initGallery(){const orbit=document.getElementById('cardOrbit');cardData.forEach((c,i)=>{const el=document.createElement('div');el.className='orbit-card';el.innerHTML=`<div class="card-face card-front"><img src="${c.img}" alt="${c.name}"></div><div class="card-face card-back"><div class="card-title">${c.name}</div></div>`;el.addEventListener('click',()=>c.url&&window.open(c.url,'_blank'));orbit.appendChild(el)})}
-function getScrollProgress(){const max=document.body.scrollHeight-window.innerHeight;return max>0?Math.max(0,Math.min(1,window.scrollY/max)):0}
-window.addEventListener('scroll',()=>{scrollVelocity=window.scrollY-lastScrollY;lastScrollY=window.scrollY;targetScroll=getScrollProgress();fgMatrix.spawn(scrollVelocity)},{passive:true});
-let lastTime=0;
-function animate(t){requestAnimationFrame(animate);if(t-lastTime<16)return;lastTime=t;const time=t*0.001;scrollProgress+=(targetScroll-scrollProgress)*0.1;const phase=getPhase(scrollProgress);const pp=getPhaseProgress(scrollProgress,phase);
-if(phase==='LOADING'||phase==='MESH_APPROACH'){matrixCanvas.classList.remove('visible');document.getElementById('loadingPhase').style.opacity='1'}else{matrixCanvas.classList.add('visible');document.getElementById('loadingPhase').style.opacity='0'}
-matrixCtx.fillStyle='rgba(2,2,4,0.15)';matrixCtx.fillRect(0,0,matrixWidth,matrixHeight);bgMatrix.update();bgMatrix.draw(matrixCtx);fgMatrix.update();fgMatrix.draw(matrixCtx);
-if(phase==='LOADING'){meshGroup.visible=false;torusGroup.visible=false}else if(phase==='MESH_APPROACH'){meshGroup.visible=true;torusGroup.visible=true;meshGroup.position.x=-20+pp*26;meshGroup.position.z=-20;meshGroup.scale.setScalar(0.2+pp*3.8);meshGroup.rotation.y+=0.01;torus.rotation.x=Math.PI/2+Math.sin(time*2)*0.3;torus.rotation.y+=0.01}else if(phase==='TITLE'){meshGroup.position.x=6+Math.sin(time*0.5)*0.5;meshGroup.position.y=Math.sin(time*0.3)*0.1;meshGroup.position.z=-20;meshGroup.scale.setScalar(4);meshGroup.rotation.y+=0.005;torusGroup.visible=true;torusGroup.scale.setScalar(1);torus.rotation.x=Math.PI/2+Math.sin(time*2)*0.4;torus.rotation.y+=0.015;document.querySelectorAll('#heroTitle .char').forEach(ch=>ch.classList.add('visible'))}else if(phase==='SLOGAN'){meshGroup.position.x=6;meshGroup.position.z=-20;meshGroup.rotation.y+=0.01;torusGroup.visible=true;torusGroup.scale.setScalar(0.9);if(!window.sloganSetup){window.sloganSetup=true;const s='Click any lesson to begin.';document.getElementById('sloganLine').innerHTML=s.split('').map(ch=>{const sp=document.createElement('span');sp.className='slogan-char';sp.textContent=ch;return sp.outerHTML}).join('')}if(pp>0){const chars=document.querySelectorAll('.slogan-char');for(let i=0;i<Math.floor(pp*chars.length);i++)chars[i].classList.add('revealed')}}else if(phase==='GALLERY'){meshGroup.position.x=6;meshGroup.position.z=-20;meshGroup.scale.setScalar(4);meshGroup.rotation.y+=0.005;torusGroup.visible=false;document.getElementById('galleryPhase').classList.add('visible');const cards=document.querySelectorAll('.orbit-card');const activeIdx=Math.floor(((scrollProgress-PHASES.GALLERY.start)/(PHASES.GALLERY.end-PHASES.GALLERY.start))*cards.length);cards.forEach((c,i)=>{const d=i-activeIdx;c.className='orbit-card';if(d===0)c.classList.add('active');else if(d===-1)c.classList.add('side-left');else if(d===1)c.classList.add('side-right');else if(d<=-2)c.classList.add('far-left');else if(d>=2)c.classList.add('far-right');else c.classList.add('hidden')})}else{const fp=(scrollProgress-PHASES.FINALE.start)/(PHASES.FINALE.end-PHASES.FINALE.start);meshGroup.position.x=Math.sin(fp*Math.PI*4)*8;meshGroup.position.z=-20;meshGroup.scale.setScalar(fp<0.5?4+fp*32:20-(fp-0.5)*32);meshGroup.rotation.y+=0.02;torusGroup.visible=false;document.getElementById('bottom-bar').classList.add('visible')}
-camera.position.x+=((meshGroup.position.x||0)*0.3-camera.position.x)*0.05;camera.position.y+=(1.5-camera.position.y)*0.05;camera.position.z+=((meshGroup.position.z||-10)*0.5+8-camera.position.z)*0.05;camera.lookAt(meshGroup.position.x*0.5,0.25,0);renderer.render(scene,camera)}
-initGallery();requestAnimationFrame(animate);
-window.addEventListener('resize',()=>{matrixWidth=window.innerWidth;matrixHeight=window.innerHeight;matrixCanvas.width=matrixWidth;matrixCanvas.height=matrixHeight;renderer.setSize(matrixWidth,matrixHeight);camera.aspect=matrixWidth/matrixHeight;camera.updateProjectionMatrix()});
-}catch(e){console.error('Portal error:',e)}
+const done=JSON.parse(localStorage.getItem('te-done')||'[]');
+function refresh(){document.getElementById('done').textContent=done.length;document.getElementById('progress').style.width=(done.length/12*100)+'%';document.getElementById('streak').textContent=localStorage.getItem('te-streak')||0}
+refresh();
+const grid=document.getElementById('grid');
+data.forEach(c=>{
+  const a=document.createElement('a');a.className='card';a.href=c.url;
+  if(done.includes(c.url))a.style.outline='2px solid var(--accent)';
+  a.addEventListener('click',()=>{if(!done.includes(c.url)){done.push(c.url);localStorage.setItem('te-done',JSON.stringify(done));const today=new Date().toDateString();if(localStorage.getItem('te-last')!==today){localStorage.setItem('te-streak',String((parseInt(localStorage.getItem('te-streak')||0)+1)));localStorage.setItem('te-last',today)}refresh()}});
+  a.innerHTML='<img src="'+c.img+'" alt="'+c.name+'" loading="lazy"><div class="card-body"><div class="card-title">'+c.name+'</div><div class="card-desc">'+c.desc+'</div></div>';
+  grid.appendChild(a);
+});
+// DotField background
+(function(){const c=document.getElementById('dotfield');const ctx=c.getContext('2d');let w,h,dots=[];function resize(){w=c.width=innerWidth;h=c.height=innerHeight;dots=[];const gap=36;for(let x=gap/2;x<w;x+=gap)for(let y=gap/2;y<h;y+=gap)dots.push({x,y})}resize();addEventListener('resize',resize);let mx=-9999,my=-9999;addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY});function frame(){ctx.fillStyle='rgba(3,3,10,0.2)';ctx.fillRect(0,0,w,h);for(const d of dots){const dist=Math.hypot(d.x-mx,d.y-my);const swell=1+(1-Math.min(dist,400)/400)*8;const r=1.4*swell;const a=0.12+0.4*(1-Math.min(dist,400)/400);ctx.beginPath();ctx.arc(d.x,d.y,r,0,Math.PI*2);ctx.fillStyle='rgba(34,211,238,'+a+')';ctx.fill()}requestAnimationFrame(frame)}frame()})();
+// Variable proximity title
+(function(){const el=document.getElementById('heroTitle');const text=el.textContent;el.textContent='';const chars=[];for(const ch of text){const s=document.createElement('span');s.className='vp';s.textContent=ch;s.style.fontVariationSettings="'wght' 400,'opsz' 144";el.appendChild(s);chars.push(s)}let mx=-9999,my=-9999;addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY});function frame(){for(const s of chars){const r=s.getBoundingClientRect();const cx=r.left+r.width/2;const cy=r.top+r.height/2;const dist=Math.hypot(cx-mx,cy-my);const t=Math.max(0,1-dist/200);const sm=t*t*t*(t*(t*6-15)+10);s.style.fontVariationSettings="'wght' "+(400+600*sm)+",'opsz' "+(144-100*sm)}requestAnimationFrame(frame)}frame()})();
 </script>
-<p style="text-align:center;font-size:.7rem;color:#6b7280;padding:12px 24px;border-top:1px solid rgba(255,255,255,.08);margin-top:20px;">Disclaimer: This is an independent practice resource for IELTS-style exam preparation. It is not affiliated with, endorsed by, or connected to IELTS, IDP Education, British Council, or Cambridge Assessment English. IELTS is a registered trademark of its respective owners.</p>
 </body>
 </html>
