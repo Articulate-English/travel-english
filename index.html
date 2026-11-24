@@ -50,9 +50,6 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
 }
 .hero-box h1{font-family:'Roboto Flex',sans-serif;font-size:clamp(2.5rem,6vw,4rem);margin-bottom:.5rem}
 .hero-box .sub{text-align:center;color:var(--muted);margin-bottom:0}
-.hero-btn{margin:1.5rem auto 2rem;display:block;padding:1rem 2.5rem;border:none;border-radius:999px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04070f;font-weight:700;font-size:1.05rem;cursor:pointer;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 30px -8px var(--glow)}
-.hero-btn:hover{transform:scale(1.08) translateY(-3px);box-shadow:0 16px 40px -10px var(--glow)}
-.hero-btn:active{transform:scale(.96)}
 .badge{position:fixed;top:12px;right:16px;z-index:10;background:var(--surface-strong);border:1px solid var(--border);border-radius:999px;padding:.4rem .9rem;font-size:.85rem}
 .icon-btn{position:fixed;top:16px;right:72px;z-index:10;width:46px;height:46px;padding:0;border-radius:50%;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
@@ -80,7 +77,6 @@ body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-h
   <h1 id="heroTitle">Travel English</h1>
   <p class="sub">12 interactive lessons for Italian speakers. Pick any topic.</p>
 </div>
-<button class="hero-btn" onclick="document.getElementById('grid').scrollIntoView({behavior:'smooth'})">Start Learning</button>
 <div class="grid" id="grid"></div>
 <script>
 const THEME_ORDER=['','midnight','forest','rose','lavender','sunset','cosmos','ice'];
