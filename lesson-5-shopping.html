@@ -148,10 +148,6 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.12;letter
   box-shadow:0 14px 34px rgba(0,0,0,.4);background:var(--bg-deep)}
 .photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:.9rem 0}
 .photo-pair img{width:100%;height:clamp(180px,28vh,260px);object-fit:cover;border-radius:14px;border:1px solid var(--border);background:var(--bg-deep)}
-.ta{width:100%;min-height:110px;resize:vertical;background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:14px;
-  color:var(--text);padding:.85rem 1rem;font:inherit;font-size:1rem;line-height:1.6;margin:.8rem 0}
-.ta::placeholder{color:var(--text-dim);opacity:.7}
-.ta:focus{outline:none;border-color:var(--border-strong);box-shadow:0 0 0 3px rgba(var(--accent-rgb),.16)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:.5rem;min-height:46px;padding:.68rem 1.25rem;border-radius:12px;cursor:pointer;
@@ -307,7 +303,7 @@ h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.12;letter
   <div class="content">
     <p class="label">Describe the picture:</p>
   <img class="photo" src="https://images.pexels.com/photos/33803366/pexels-photo-33803366.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Spacious indoor shopping mall with a skylight roof in Portland, Oregon, showcasing modern architecture." width="4032" height="3024" decoding="async">
-  <textarea class="ta"></textarea>
+  
   <button class="btn" data-target="d1" type="button">Model</button>
   <div class="answer" id="d1"><span class="tag">Model answer</span>People navigate the transport hub efficiently. Digital displays guide passengers. Modern architecture combines functionality with design.</div>
   
